@@ -1,0 +1,13 @@
+textarea.message {
+	width: 85%;
+}
+
+.mail {
+	border: 1px solid #555;
+	margin: 20px;
+	padding: 8px;
+}
+
+.mail .header {
+	margin-bottom: 10px;
+}

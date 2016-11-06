@@ -4,17 +4,20 @@
 		to
 		<input
 			placeholder="username"
+			[(ngModel)]="mailTo"
 			value="ubik"
 		>
 	</label>
 	<br>
 
 	<textarea
+		class="message"
 		placeholder="message"
+		[(ngModel)]="mailText"
 	></textarea>
 	<br>
 
-	<button>
+	<button (click)="send()">
 		send
 	</button>
 
@@ -23,10 +26,18 @@
 <br>
 <br>
 <div class="mail-messages">
-	message...<br>
-	message...<br>
-	message...<br>
-	message...<br>
-	message...<br>
-</div>
 
+	<div class="mail" *ngFor="let mail of mails">
+		<div class="header">
+			{{mail.mail_from_name}}
+			-&gt;
+			{{mail.mail_to_name}}
+			&nbsp; &nbsp; 
+			{{mail.cas}}
+		</div>
+		<div class="message">
+			{{mail.mail_text}}
+		</div>
+	</div>
+
+</div>

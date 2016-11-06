@@ -5,8 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppRouting } from './app.routing'; 
 
-import { AppComponent } from './app.component';
+// services
+import { UserService } from './services/user.service';
+import { MailService } from './mail/mail.service';
 
+// components
+import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './header.login/login.component';
 import { LogoutComponent } from './header.logout/logout.component';
@@ -21,6 +25,10 @@ import { MailComponent } from './mail/mail.component';
 		HttpModule,
 		AppRouting
 	],
+	providers: [
+		UserService,
+		MailService,
+	],
 	declarations: [
 		AppComponent,
 
@@ -31,7 +39,6 @@ import { MailComponent } from './mail/mail.component';
 		MainComponent,
 		MailComponent,
 	],
-	providers: [],
 	bootstrap: [
 		AppComponent
 	]
