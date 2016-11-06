@@ -1,0 +1,8 @@
+# put any local user-specific files here
+/.user
+
+# common stuff
+/node_modules
+/bower_components
+/build
+npm-debug.log

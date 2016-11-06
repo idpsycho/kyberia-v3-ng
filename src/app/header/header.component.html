@@ -1,0 +1,15 @@
+<div class="header-v3">
+
+	<div *ngIf="!userService.isLoggedIn()">
+		<login></login>
+	</div>
+
+	<div *ngIf="userService.isLoggedIn()">
+		<a routerLink="/" routerLinkActive="active">main</a>
+		-
+		<a routerLink="/mail" routerLinkActive="active">mail</a>
+
+		<logout></logout>
+	</div>
+
+</div>

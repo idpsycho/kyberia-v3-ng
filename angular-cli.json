@@ -1,0 +1,48 @@
+{
+  "project": {
+    "version": "1.0.0-beta.19-3",
+    "name": "ng"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "build",
+      "assets": [
+        "assets",
+        ".htaccess"
+      ],
+      "index": "index.html",
+      "main": "bootstrap.ts",
+      "tsconfig": "../setup/tsconfig.json",
+      "prefix": "app",
+      "mobile": false,
+      "styles": [
+        "assets/app.scss"
+      ],
+      "scripts": [],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}
