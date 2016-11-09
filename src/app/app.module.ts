@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppRouting } from './app.routing'; 
+import { AppRouting } from './app.routing';
 
 // services
 import { UserService } from './services/user.service';
@@ -16,6 +16,7 @@ import { LoginComponent } from './header.login/login.component';
 import { LogoutComponent } from './header.logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { MailComponent } from './mail/mail.component';
+import { TopkComponent }  from './topk/topk.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MailComponent } from './mail/mail.component';
 
 		MainComponent,
 		MailComponent,
+		TopkComponent,
 	],
 	bootstrap: [
 		AppComponent
