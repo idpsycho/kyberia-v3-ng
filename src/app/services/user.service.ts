@@ -4,6 +4,8 @@ import { Observable }	from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { HOST, V3API_OPTIONS } from '../../environments/environment';
+
 
 @Injectable()
 export class UserService {
@@ -31,14 +33,14 @@ export class UserService {
 
 		return this.http
 			.post(
-				'http://v3.brm.sk/',
+				HOST,
 				{
 					event:		'login',
 					login:		username,
 					password:	password,
 					login_type:	'name',
 				},
-				this.v3apioptions()
+				V3API_OPTIONS
 			)
 			.map(this.extractJson)
 			.map(this.setUserData)
@@ -48,11 +50,11 @@ export class UserService {
 
 		return this.http
 			.post(
-				'http://v3.brm.sk/',
+				HOST,
 				{
 					event:		'logout',
 				},
-				this.v3apioptions()
+				V3API_OPTIONS
 			)
 			.map(this.extractJson)
 			.map(this.setUserData)
@@ -74,15 +76,6 @@ export class UserService {
 		return json;
 	}
 
-	v3apioptions() {
-		let headers = new Headers({
-			'v3api': 1,
-		})
-		let options = new RequestOptions({
-			headers:			headers,
-			withCredentials:	true,
-		});
-		return options;
-	}
+
 
 }
