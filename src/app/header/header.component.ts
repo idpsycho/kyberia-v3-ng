@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { UserService } from '../services/user.service';
 
 
@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 	selector: 'header-v3',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.css'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent {
 
