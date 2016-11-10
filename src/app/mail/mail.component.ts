@@ -16,6 +16,9 @@ export class MailComponent implements OnInit {
 	mailTo = '';
 	mailText = '';
 	mails = [];
+	mailUsers = [];
+	user;
+	clicked = false;
 
 	constructor(
 		private mailService: MailService,
@@ -28,6 +31,7 @@ export class MailComponent implements OnInit {
 			this.router.navigate([ '/' ]);
 			return;
 		}
+		this.user = this.userService.getUser();
 
 		this.getMails();
 	}
@@ -37,6 +41,7 @@ export class MailComponent implements OnInit {
 			.getMails()
 			.subscribe( this.onGotMails )
 	}
+
 	send = () => {
 		this.mailService
 			.sendMail(this.mailTo, this.mailText)
@@ -50,10 +55,36 @@ export class MailComponent implements OnInit {
 			return;
 
 		this.mailTo = this.mails[0].mail_to_name;
+
+		const mailsLength = this.mails.length;
+		let tempUsersArr = [];
+		for (let i = 0; i < mailsLength; i++) {
+			if (this.user.userId == this.mails[i].mail_from) continue;
+			if (!tempUsersArr[this.mails[i].mail_from]) {
+				tempUsersArr[this.mails[i].mail_from] = [];
+			}
+			tempUsersArr[this.mails[i].mail_from].push(this.mails[i]);
+		}
+		tempUsersArr = tempUsersArr.map(user => {
+			return {
+				id: user[0].mail_from,
+				name: user[0].mail_from_name,
+				mails: user,
+			}
+		});
+
+		tempUsersArr.forEach(user => {
+			this.mailUsers.push(user);
+		});
 	}
+
 	onMailSent = (json) => {
 		this.mailText = '';
 
 		this.getMails();
+	}
+
+	userSelected = (user) => {
+		this.clicked = true;
 	}
 }

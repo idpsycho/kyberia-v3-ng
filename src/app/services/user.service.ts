@@ -15,6 +15,11 @@ export class UserService {
 	isLoggedIn = () => {
 		return this.user;
 	}
+
+	getUser = () => {
+		return this.user;
+	}
+
 	getUserName = () => {
 		if (!this.user)
 			return '';
@@ -23,7 +28,7 @@ export class UserService {
 	}
 
 	login(username, password): Observable<Object> {
-		
+
 		return this.http
 			.post(
 				'http://v3.brm.sk/',
@@ -40,7 +45,7 @@ export class UserService {
 	}
 
 	logout(): Observable<Object> {
-		
+
 		return this.http
 			.post(
 				'http://v3.brm.sk/',

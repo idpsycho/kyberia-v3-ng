@@ -1,43 +1,48 @@
-<div class="mail-form">
-
-	<label>
-		to
-		<input
-			placeholder="username"
-			[(ngModel)]="mailTo"
-			value="ubik"
-		>
-	</label>
-	<br>
-
-	<textarea
-		class="message"
-		placeholder="message"
-		[(ngModel)]="mailText"
-	></textarea>
-	<br>
-
-	<button (click)="send()">
-		send
-	</button>
-
-</div>
-
-<br>
-<br>
-<div class="mail-messages">
-
-	<div class="mail" *ngFor="let mail of mails">
-		<div class="header">
-			{{mail.mail_from_name}}
-			-&gt;
-			{{mail.mail_to_name}}
-			&nbsp; &nbsp; 
-			{{mail.cas}}
-		</div>
-		<div class="message">
-			{{mail.mail_text}}
+<div class="users-view" *ngIf="!clicked">
+	<div class="user-list" *ngFor="let user of mailUsers">
+		<div class="user-item" (click)="userSelected(user)">
+			<div>{{user.name}}</div>
+			<div>{{user.mails.length}}</div>
 		</div>
 	</div>
+</div>
 
+<div class="mail-view" *ngIf="clicked">
+	<div class="mail-form">
+		<label>
+			to
+			<input
+				placeholder="username"
+				[(ngModel)]="mailTo"
+				value="ubik"
+			>
+		</label>
+		<br>
+		<textarea
+			class="message"
+			placeholder="message"
+			[(ngModel)]="mailText"
+		></textarea>
+		<br>
+		<button (click)="send()">
+			send
+		</button>
+	</div>
+
+	<br>
+	<br>
+	<div class="mail-messages">
+		<div class="mail" *ngFor="let mail of mails">
+			<div class="header">
+				{{mail.mail_from_name}}
+				-&gt;
+				{{mail.mail_to_name}}
+				&nbsp; &nbsp;
+				{{mail.cas}}
+			</div>
+			<div class="message">
+				{{mail.mail_text}}
+			</div>
+		</div>
+	</div>
 </div>
