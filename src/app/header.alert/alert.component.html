@@ -1,0 +1,7 @@
+<div
+	class="site-alert"
+	*ngIf="this.alertService.getAlert()"
+	(ngClick)="this.alertService.clear()"
+>
+	{{this.alertService.getAlert()}}
+</div>

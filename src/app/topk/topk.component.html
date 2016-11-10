@@ -1,4 +1,43 @@
-<div class="header-v3">
-	tu budu Kacka!
-	penis
+<div class="container">
+
+	<div class="node" *ngFor="let node of topkNodes">
+
+		<div class="header clearfix">
+			<a href="#">{{node.creator}}</a> -
+			<a href="#">{{node.node_name}}</a> in
+			<a href="#">{{node.parent_name}}</a>
+			<button class="k">{{node.k}}</button>
+		</div>
+
+		<div class="content">
+			{{node.node_content}}
+		</div>
+
+	</div>
 </div>
+
+<!--
+creator:							"ubik"
+external_link:						"template://1"
+k:									"1"
+lastchild_created:					"2016-11-09 23:33:29"
+lastdescendant_created:				"2007-02-01 17:48:09"
+nl2br:								"1"
+node_children_count:				"233"
+node_created:						"2000-01-01 00:00:00"
+node_creator:						"332"
+node_descendant_count:				"757359"
+node_external_access:				"yes"
+node_id:							"1"
+node_level3:						"0"
+node_name:							"main"
+node_parent:						"0"
+node_system_access:					"moderated"
+node_type:							"14"
+node_updated:						"2007-01-27 13:01:24"
+node_vector:						"0000000000000001"
+node_views:							"5169688"
+parent_name:						null
+parent_node_creator:				"0"
+template_id:						"1"
+-->

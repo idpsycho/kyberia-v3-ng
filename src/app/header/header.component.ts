@@ -11,4 +11,7 @@ export class HeaderComponent {
 
 	constructor(public userService: UserService) { }
 
+	loggedIn = () => {
+		return this.userService.isLoggedIn();
+	}
 }

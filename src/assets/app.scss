@@ -2,6 +2,8 @@ $green: #6dae42;
 
 body, html {
 	background: black;
+	padding: 0;
+	margin: 0;
 }
 
 body {
@@ -34,20 +36,46 @@ textarea {
 }
 
 button {
-	background: $green;
+	background: black;
 	border: 1px solid $green;
-	color: black;
+	color: white;
 	padding: 3px 8px;
 	cursor: pointer;
 
 	&:hover {
-		border: 1px solid lighten($green, 10%);
-		background: lighten($green, 10%);
+		background: #333;
+	}
+
+	&.k {
+		color: red;
+		font-weight: bold;
 	}
 }
+
 
 .error {
 	color: red;
 	font-weight: bold;
 }
 
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.container {
+	padding: 20px;
+}
+
+.container-fullscreen {
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

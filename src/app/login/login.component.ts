@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }				from '@angular/router';
 import { UserService } from '../services/user.service';
 
 
 @Component({
 	selector: 'login',
 	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
 
 	user = null;
-	username = 'ubik';
+	username = localStorage.getItem('lastLoginUsername') || 'ubik';
 	password = '...';
 	error = '';
 
-	constructor(public userService: UserService) { }
+	constructor(
+		public userService: UserService,
+		public router: Router,
+	) { }
 
 	login(): void {
 		this.userService
@@ -27,8 +32,11 @@ export class LoginComponent {
 			return;
 		}
 
+		localStorage.setItem('lastLoginUsername', this.username);
 		this.user = json;
 		this.error = '';
+
+		this.router.navigate([ '/' ]);
 	}
 
 }

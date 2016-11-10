@@ -1,3 +1,11 @@
-.header-v3 {
-	color: pink;
+.node {
+	padding-bottom: 50px;
+}
+
+.node > .header {
+	background: #333;
+}
+
+button.k {
+	float: right;
 }

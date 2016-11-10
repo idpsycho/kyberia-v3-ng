@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { Router }			from '@angular/router';
+
+import { UserService }		from '../services/user.service';
 
 
 @Component({
@@ -11,7 +13,10 @@ export class LogoutComponent {
 	user = null;
 	error = '';
 
-	constructor(public userService: UserService) { }
+	constructor(
+		public userService: UserService,
+		private router: Router,
+	) { }
 
 	logout(): void {
 		this.userService
@@ -27,6 +32,8 @@ export class LogoutComponent {
 
 		this.user = null;
 		this.error = '';
+
+		this.router.navigate([ '/' ]);
 	}
 
 	userIsLoggedIn() {

@@ -1,0 +1,33 @@
+<div class="page-login container-fullscreen">
+
+	<form>
+		<input
+			placeholder="login"
+			name="username"
+			[(ngModel)]="username"
+			type="text"
+		>
+		<br>
+
+		<input
+			placeholder="heslo"
+			name="password"
+			[(ngModel)]="password"
+			type="password"
+		>
+		<br>
+
+		<button
+			type="submit"
+			(click)="login()"
+		>
+			login
+		</button>
+		<br>
+
+		<div class="error">
+			{{error}}
+		</div>
+	</form>
+
+</div>

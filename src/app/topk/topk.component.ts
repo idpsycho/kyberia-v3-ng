@@ -1,7 +1,7 @@
 import { Component, OnInit }	from '@angular/core';
 import { Router }				from '@angular/router';
 
-import { UserService }			from '../services/user.service';
+import { TopkService }			from './topk.service';
 
 @Component({
 	selector: 'topk',
@@ -10,16 +10,22 @@ import { UserService }			from '../services/user.service';
 })
 export class TopkComponent implements OnInit {
 
+	topkNodes = [];
+
 	constructor(
-		private userService: UserService,
-		private router: Router,
+		private topkService: TopkService,
 	) { }
 
 	ngOnInit() {
-		if ( !this.userService.isLoggedIn() ) {
-			this.router.navigate([ '/' ]);
-			return;
-		}
+		this.topkService
+			.getTopk()
+			.subscribe(this.reduceTopk)
 	}
 
+	reduceTopk = (json) => {
+		if (!json.topk)
+			return;
+
+		this.topkNodes = json.topk;
+	}
 }

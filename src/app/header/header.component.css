@@ -1,7 +1,10 @@
 .header-v3 {
 	text-align: center;
+	background: #6dae42;
+	color: #444;
+	line-height: 50px;
 }
 
-logout {
-	margin-left: 20px;
+.header-v3 a {
+	padding: 15px;
 }

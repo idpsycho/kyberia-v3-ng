@@ -1,15 +1,28 @@
 <div class="header-v3">
 
-	<div *ngIf="!userService.isLoggedIn()">
-		<login></login>
-	</div>
+	<span>
+		<a routerLink="/" routerLinkActive="active">main</a>
+		/
+	</span>
 
-	<div *ngIf="userService.isLoggedIn()">
+	<span *ngIf="loggedIn()">
 		<a routerLink="/mail" routerLinkActive="active">mail</a>
 		/
+	</span>
+
+	<span *ngIf="loggedIn()">
 		<a routerLink="/topk" routerLinkActive="active">topK</a>
 		/
+	</span>
+
+	<span *ngIf="loggedIn()">
 		<logout></logout>
-	</div>
+	</span>
+	
+	<span *ngIf="!loggedIn()">
+		<a routerLink="/login" routerLinkActive="active">login</a>
+	</span>
 
 </div>
+
+<site-alert></site-alert>
