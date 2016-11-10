@@ -4,6 +4,7 @@ import { Observable }	from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { HOST, V3API_OPTIONS } from '../../environments/environment';
 
 @Injectable()
 export class TopkService {
@@ -14,8 +15,8 @@ export class TopkService {
 
 		return this.http
 			.get(
-				'http://v3.brm.sk/id/15',
-				this.v3apioptions()
+				HOST+'/id/15',
+				V3API_OPTIONS
 			)
 			.map(this.extractJson)
 	}

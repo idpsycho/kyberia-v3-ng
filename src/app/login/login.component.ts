@@ -36,7 +36,7 @@ export class LoginComponent {
 		this.user = json;
 		this.error = '';
 
-		this.router.navigate([ '/' ]);
+		this.router.navigate([ '/topk' ]);
 	}
 
 }

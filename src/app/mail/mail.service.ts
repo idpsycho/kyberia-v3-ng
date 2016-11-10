@@ -4,6 +4,8 @@ import { Observable }	from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { HOST, V3API_OPTIONS } from '../../environments/environment';
+
 
 @Injectable()
 export class MailService {
@@ -11,17 +13,16 @@ export class MailService {
 	constructor (private http: Http) {}
 
 	sendMail(mailTo, mailText): Observable<Object> {
-		
 		return this.http
 			.post(
-				'http://v3.brm.sk/',
+				HOST,
 				{
 					mail_to:		mailTo,
 					mail_text:		mailText,
 					event:			'send',
 					mail_to_type:	'name',
 				},
-				this.v3apioptions()
+				V3API_OPTIONS
 			)
 			.map(this.extractJson)
 	}
@@ -30,25 +31,14 @@ export class MailService {
 		
 		return this.http
 			.get(
-				'http://v3.brm.sk/id/24',
-				this.v3apioptions()
+				HOST+'/id/24',
+				V3API_OPTIONS
 			)
 			.map(this.extractJson)
 	}
 
 	extractJson(res: Response) {
 		return res.json();
-	}
-
-	v3apioptions() {
-		let headers = new Headers({
-			'v3api': 1,
-		})
-		let options = new RequestOptions({
-			headers:			headers,
-			withCredentials:	true,
-		});
-		return options;
 	}
 
 }

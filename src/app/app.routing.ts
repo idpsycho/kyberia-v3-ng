@@ -10,8 +10,8 @@ import { TopkComponent }  from './topk/topk.component';
 @NgModule({
 	imports: [
 		RouterModule.forRoot([
-			{ path: '',			component: MainComponent },
-			{ path: 'login',	component: LoginComponent },
+			{ path: '',			component: LoginComponent },
+			// { path: 'login',	component: LoginComponent },
 			{ path: 'mail',		component: MailComponent },
 			{ path: 'topk',		component: TopkComponent }
 		])
