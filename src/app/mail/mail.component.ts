@@ -57,15 +57,21 @@ export class MailComponent implements OnInit {
 
 		this.mailTo = mails[0].mail_to_name;
 
+		let tempUsers = [];
 		mails.forEach(mail => {
-			if (this.user.userId != mail.mail_from) {
-				if (!this.mailUsers[mail.mail_from]) {
-					this.mailUsers[mail.mail_from] = [];
+			if (this.user.userId == mail.mail_from) {
+				if (!tempUsers[mail.mail_to]) {
+					tempUsers[mail.mail_to] = [];
 				}
-				this.mailUsers[mail.mail_from].push(mail);
+				tempUsers[mail.mail_to].push(mail);
+			} else {
+				if (!tempUsers[mail.mail_from]) {
+					tempUsers[mail.mail_from] = [];
+				}
+				tempUsers[mail.mail_from].push(mail);
 			}
 		});
-		this.mailUsers = this.mapToArr(this.mailUsers);
+		this.mailUsers = this.mapToArr(tempUsers);
 	}
 
 	onMailSent = (json) => {
