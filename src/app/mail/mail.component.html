@@ -33,8 +33,8 @@
 
 		<br>
 		<br>
-		<div class="mail-messages">
-			<div class="mail" *ngFor="let mail of selectedUser.value">
+		<div class="mail-messages && loaded">
+			<div class="mail" *ngFor="let mail of arrMailUsers">
 				<div class="header">
 					{{mail.mail_from_name}}
 					-&gt;
