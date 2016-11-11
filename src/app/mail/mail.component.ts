@@ -20,6 +20,7 @@ export class MailComponent implements OnInit {
 	mailUsers = {};
 	user = null;
 	selectedUser = false;
+	loaded = false;
 
 	constructor(
 		private mailService: MailService,
@@ -58,7 +59,10 @@ export class MailComponent implements OnInit {
 		this.mailTo = mails[0].mail_to_name;
 
 		let tempUsers = [];
+		console.log('this.user.userId', this.user.userId);
 		mails.forEach(mail => {
+			console.log('mail.mail_from', mail.mail_from, this.user.userId == mail.mail_from);
+
 			if (this.user.userId == mail.mail_from) {
 				if (!tempUsers[mail.mail_to]) {
 					tempUsers[mail.mail_to] = [];
@@ -72,6 +76,10 @@ export class MailComponent implements OnInit {
 			}
 		});
 		this.mailUsers = this.mapToArr(tempUsers);
+		console.log('this.mailUsers', this.mailUsers);
+
+
+		this.loaded = true;
 	}
 
 	onMailSent = (json) => {
@@ -81,7 +89,10 @@ export class MailComponent implements OnInit {
 	}
 
 	selectUser = (user) => {
+		console.log('user', user);
+
 		this.selectedUser = user;
+		this.mailTo = this.getName(user.key, user.value[0]);
 	}
 
 	mapToArr = (map) => {
@@ -90,5 +101,11 @@ export class MailComponent implements OnInit {
 			arr.push( {key: key, value: map[key]} );
 		}
 		return arr;
+	}
+
+	getName = (id, data) => {
+		if (id === data.mail_from) return data.mail_from_name;
+		if (id === data.mail_to) return data.mail_to_name;
+		return 'anonym';
 	}
 }
