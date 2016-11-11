@@ -40,7 +40,7 @@ export class LoginComponent {
 		this.user = json;
 		this.error = '';
 
-		this.router.navigate([ '/topk' ]);
+		this.router.navigate([ '/mail' ]);
 	}
 
 }
