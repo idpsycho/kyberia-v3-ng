@@ -17,10 +17,11 @@ export class MailComponent implements OnInit {
 
 	mailTo = '';
 	mailText = '';
-	mailUsers = {};
+	mailUsers;
 	user = null;
 	selectedUser = false;
 	loaded = false;
+	arrMailUsers = [];
 
 	constructor(
 		private mailService: MailService,
@@ -59,10 +60,7 @@ export class MailComponent implements OnInit {
 		this.mailTo = mails[0].mail_to_name;
 
 		let tempUsers = [];
-		console.log('this.user.userId', this.user.userId);
 		mails.forEach(mail => {
-			console.log('mail.mail_from', mail.mail_from, this.user.userId == mail.mail_from);
-
 			if (this.user.userId == mail.mail_from) {
 				if (!tempUsers[mail.mail_to]) {
 					tempUsers[mail.mail_to] = [];
@@ -76,22 +74,22 @@ export class MailComponent implements OnInit {
 			}
 		});
 		this.mailUsers = this.mapToArr(tempUsers);
-		console.log('this.mailUsers', this.mailUsers);
-
-
+		if (this.selectedUser) {
+			this.createUserMaillArr();
+		}
 		this.loaded = true;
 	}
 
 	onMailSent = (json) => {
 		this.mailText = '';
-
+		this.loaded = false;
 		this.getMails();
 	}
 
 	selectUser = (user) => {
-		console.log('user', user);
+		this.selectedUser = user.key;
+		this.createUserMaillArr();
 
-		this.selectedUser = user;
 		this.mailTo = this.getName(user.key, user.value[0]);
 	}
 
@@ -107,5 +105,9 @@ export class MailComponent implements OnInit {
 		if (id === data.mail_from) return data.mail_from_name;
 		if (id === data.mail_to) return data.mail_to_name;
 		return 'anonym';
+	}
+
+	createUserMaillArr = () => {
+		this.arrMailUsers = this.mailUsers.filter(mail => { return mail.key == this.selectedUser})[0].value;
 	}
 }
