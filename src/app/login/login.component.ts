@@ -14,6 +14,7 @@ export class LoginComponent {
 	username = localStorage.getItem('lastLoginUsername') || 'ubik';
 	password = '...';
 	error = '';
+	loading = false;
 
 	constructor(
 		public userService: UserService,
@@ -21,12 +22,15 @@ export class LoginComponent {
 	) { }
 
 	login(): void {
+		this.loading = true;
 		this.userService
 			.login(this.username, this.password)
 			.subscribe( this.onLogin, this.onLogin );
 	}
 
 	onLogin = (json) => {
+		this.loading = false;
+
 		if (!json.success) {
 			this.error = 'nepodarilo sa mi prihlasit :\'(';
 			return;

@@ -1,3 +1,14 @@
 .page-login {
 	text-align: center;
 }
+input,
+button {
+	font-size: 25px;
+	text-align: center;
+	margin: 10px 15px;
+	padding: 10px 15px;
+}
+
+button {
+	padding: 10px 40px
+}

@@ -65,6 +65,11 @@ button {
 }
 
 .container {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.container-padded {
 	padding: 20px;
 }
 
