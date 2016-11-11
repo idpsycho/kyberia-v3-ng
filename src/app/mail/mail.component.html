@@ -4,6 +4,7 @@
 		<div class="user-list" *ngFor="let user of mailUsers">
 			<div class="user-item" (click)="selectUser(user.value)">
 				<div>{{user.value[0].mail_from_name}}</div>
+				<br>
 				<div>{{user.value.length}}</div>
 			</div>
 		</div>

@@ -13,23 +13,17 @@ textarea.message {
 }
 
 .user-list {
-	max-width: 600px;
 }
 
 .user-item {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 40px;
-	border: 1px solid #6dae42;
-	color: #6dae42;
-	margin-bottom: 10px;
+	width: 100%;
+	border-bottom: 1px solid #6dae42;
+	padding: 15px;
 }
 
 .user-item:hover {
 	cursor: pointer;
-	background-color: #6dae42;
-	color: white;
+	background-color: #444;
 }
 
 .user-item > div {

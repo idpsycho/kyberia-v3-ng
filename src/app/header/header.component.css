@@ -1,6 +1,7 @@
 .header-v3 {
 	text-align: center;
-	background: #6dae42;
+	/*background: #6dae42;*/
+	border-bottom: 1px solid #6dae42;
 	color: #444;
 	line-height: 80px;
 }

@@ -4,6 +4,11 @@
 
 .node > .header {
 	background: #333;
+	padding: 15px;
+}
+
+.node > .content {
+	padding: 15px;
 }
 
 button.k {
