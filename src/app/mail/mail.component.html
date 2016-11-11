@@ -1,10 +1,9 @@
 <div class="page-mail container">
 
-	<div class="users-view" *ngIf="!selectedUser && mailUsers.length">
+	<div class="users-view" *ngIf="!selectedUser && loaded">
 		<div class="user-list" *ngFor="let user of mailUsers">
-			<div class="user-item" (click)="selectUser(user.value)">
-				<div>{{user.value[0].mail_from_name}}</div>
-				<br>
+			<div class="user-item" (click)="selectUser(user)">
+				<div>{{getName(user.key, user.value[0])}}</div>
 				<div>{{user.value.length}}</div>
 			</div>
 		</div>
@@ -35,7 +34,7 @@
 		<br>
 		<br>
 		<div class="mail-messages">
-			<div class="mail" *ngFor="let mail of selectedUser">
+			<div class="mail" *ngFor="let mail of selectedUser.value">
 				<div class="header">
 					{{mail.mail_from_name}}
 					-&gt;
