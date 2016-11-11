@@ -1,5 +1,14 @@
 <div class="page-mail container">
 
+
+	<button
+		*ngIf="selectedUser"
+		style="width: 100%; line-height: 50px;"
+		(click)="selectUser(0)"
+	>
+		spat na vsetkych
+	</button>
+
 	<div class="users-view" *ngIf="!selectedUser && loaded">
 		<div class="user-list" *ngFor="let user of mailUsers">
 			<div class="user-item" (click)="selectUser(user)">
@@ -33,7 +42,7 @@
 
 		<br>
 		<br>
-		<div class="mail-messages && loaded">
+		<div class="mail-messages && loaded" *ngIf="arrMailUsers && arrMailUsers.length">
 			<div class="mail" *ngFor="let mail of arrMailUsers">
 				<div class="header">
 					{{mail.mail_from_name}}

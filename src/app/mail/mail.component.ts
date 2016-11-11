@@ -19,7 +19,7 @@ export class MailComponent implements OnInit {
 	mailText = '';
 	mailUsers;
 	user = null;
-	selectedUser = false;
+	selectedUser = null;
 	loaded = false;
 	arrMailUsers = [];
 
@@ -87,6 +87,13 @@ export class MailComponent implements OnInit {
 	}
 
 	selectUser = (user) => {
+		if (!user) {
+			this.selectedUser = null;
+			this.arrMailUsers = [];
+			this.mailTo = '';
+			return;
+		}
+
 		this.selectedUser = user.key;
 		this.createUserMaillArr();
 
