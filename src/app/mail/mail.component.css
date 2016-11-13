@@ -16,9 +16,9 @@ textarea.message {
 }
 
 .user-item {
-	width: 100%;
 	border-bottom: 1px solid #6dae42;
 	padding: 15px;
+	display: flex;
 }
 
 .user-item:hover {
@@ -26,6 +26,16 @@ textarea.message {
 	background-color: #444;
 }
 
-.user-item > div {
-	padding: 0 10px;
+.user-item .icon {
+}
+
+.user-item .header {
+	color: white;
+	display: flex;
+	justify-content: space-between;
+}
+
+.user-item .msg {
+	flex: 1;
+	margin-left: 15px;
 }
