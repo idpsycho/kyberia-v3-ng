@@ -69,6 +69,7 @@ export class TopkComponent implements OnDestroy {
 		}
 
 		node.k++;
+		node._kGiven = true;
 	}
 
 

@@ -5,6 +5,16 @@
 .node > .header {
 	background: #333;
 	padding: 15px;
+	padding-left: 60px;
+	position: relative;
+}
+
+.header .avatar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 50px;
+	max-height: 50px;
 }
 
 .node > .content {
@@ -13,4 +23,8 @@
 
 button.k {
 	float: right;
+}
+
+.k.k-given {
+	background: #660000;
 }
