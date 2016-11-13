@@ -1,5 +1,5 @@
-import { Component, OnInit }	from '@angular/core';
-import { Router }				from '@angular/router';
+import { Component, OnInit, OnDestroy }	from '@angular/core';
+import { Router, NavigationEnd }				from '@angular/router';
 
 import { TopkService }			from './topk.service';
 import { AlertService }			from '../header.alert/alert.service';
@@ -10,30 +10,35 @@ import { UserService }			from '../services/user.service';
 	templateUrl: './topk.component.html',
 	styleUrls: ['./topk.component.css']
 })
-export class TopkComponent implements OnInit {
+// export class TopkComponent {
+export class TopkComponent implements OnDestroy {
 
 	topkNodes = [];
+
+	routeSubscription = null;
 
 	constructor(
 		private topkService: TopkService,
 		private userService: UserService,
 		private alertService: AlertService,
 		private router: Router,
-	) { }
-
-	ngOnInit() {
-		if ( !this.userService.isLoggedIn() ) {
-			this.router.navigate([ '/' ]);
+	) {
+		if ( !userService.isLoggedIn() ) {
+			router.navigate([ '/' ]);
 			return;
 		}
 
-		this.loadTopK();
+		// this.loadTopK();
+
+		this.bindRouteRefresh(this.loadTopK);
 	}
 
 
 	///////////////////////////////////
 	// actions
+
 	loadTopK = () => {
+		console.log('loadTopK');
 		this.topkService
 			.getTopk()
 			.subscribe(this.updateTopk)
@@ -50,6 +55,7 @@ export class TopkComponent implements OnInit {
 
 	///////////////////////////////////////
 	// updaters
+
 	updateTopk = (json) => {
 		if (!json.topk)
 			return;
@@ -64,4 +70,26 @@ export class TopkComponent implements OnInit {
 
 		node.k++;
 	}
+
+
+	/////////////////////////////////////////////////////
+	// toto sluzi na to, aby sa refreshovala routa
+
+	ngOnDestroy() {
+		this.unsubscribeRouteRefresh();
+	}
+	bindRouteRefresh(fn) {
+		this.routeSubscription = this.router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+				fn();
+			}
+		});
+	}
+	unsubscribeRouteRefresh() {
+		if (!this.routeSubscription) return;
+
+		this.routeSubscription.unsubscribe();
+		this.routeSubscription = null;
+	}
+
 }

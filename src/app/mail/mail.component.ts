@@ -1,10 +1,10 @@
-import { Component, OnInit }	from '@angular/core';
-import { Router }				from '@angular/router';
+import { Component, OnInit, OnDestroy }	from '@angular/core';
+import { Router, NavigationEnd }				from '@angular/router';
+import { KeysPipe } 			from '../filters/keys.pipe';
 
 import { MailService }			from './mail.service';
 import { UserService }			from '../services/user.service';
 
-import { KeysPipe } 			from '../filters/keys.pipe';
 
 
 
@@ -13,7 +13,7 @@ import { KeysPipe } 			from '../filters/keys.pipe';
 	templateUrl: './mail.component.html',
 	styleUrls: ['./mail.component.css']
 })
-export class MailComponent implements OnInit {
+export class MailComponent implements OnDestroy {
 
 	mailTo = '';
 	mailText = '';
@@ -23,38 +23,65 @@ export class MailComponent implements OnInit {
 	loaded = false;
 	arrMailUsers = [];
 
+	routeSubscription = null;
+
 	constructor(
 		private mailService: MailService,
 		private userService: UserService,
 		private router: Router,
-	) { }
+	) {
+		// console.log('MailComponent constructor');
 
-	ngOnInit() {
-		if ( !this.userService.isLoggedIn() ) {
-			this.router.navigate([ '/' ]);
+		if ( !userService.isLoggedIn() ) {
+			router.navigate([ '/' ]);
 			return;
 		}
-		this.user = this.userService.getUser();
 
-		this.getMails();
+		this.user = userService.getUser();
+
+		// this.getMails();
+
+		this.bindRouteRefresh(this.getMails);
 	}
 
+
+	/////////////////////////////////////////////////////
+	// actions
+
 	getMails = () => {
+		console.log('getMails');
 		this.mailService
 			.getMails()
-			.subscribe( this.onGotMails )
+			.subscribe( this.updateMails )
 	}
 
 	send = () => {
 		this.mailService
 			.sendMail(this.mailTo, this.mailText)
-			.subscribe( this.onMailSent )
+			.subscribe( this.updateMailSent )
 	}
 
-	onGotMails = (json) => {
+	selectUser = (user) => {
+		if (!user) {
+			this.selectedUser = null;
+			this.arrMailUsers = [];
+			this.mailTo = '';
+			return;
+		}
+
+		this.selectedUser = user.key;
+		this.createUserMaillArr();
+
+		this.mailTo = this.getName(user.key, user.value[0]);
+	}
+
+	///////////////////////////////////////////////////
+	// updates
+
+	updateMails = (json) => {
 		const mails = json.mails;
 
-		if (!mails || !mails.length)
+		if (!mails || !mails.length || !this.user)
 			return;
 
 		this.mailTo = mails[0].mail_to_name;
@@ -80,25 +107,15 @@ export class MailComponent implements OnInit {
 		this.loaded = true;
 	}
 
-	onMailSent = (json) => {
+	updateMailSent = (json) => {
 		this.mailText = '';
 		this.loaded = false;
 		this.getMails();
 	}
 
-	selectUser = (user) => {
-		if (!user) {
-			this.selectedUser = null;
-			this.arrMailUsers = [];
-			this.mailTo = '';
-			return;
-		}
 
-		this.selectedUser = user.key;
-		this.createUserMaillArr();
-
-		this.mailTo = this.getName(user.key, user.value[0]);
-	}
+	/////////////////////////////////////////////////
+	// helpers
 
 	mapToArr = (map) => {
 		let arr = [];
@@ -117,4 +134,27 @@ export class MailComponent implements OnInit {
 	createUserMaillArr = () => {
 		this.arrMailUsers = this.mailUsers.filter(mail => { return mail.key == this.selectedUser})[0].value;
 	}
+
+
+
+	/////////////////////////////////////////////////////
+	// toto sluzi na to, aby sa refreshovala routa
+
+	ngOnDestroy() {
+		this.unsubscribeRouteRefresh();
+	}
+	bindRouteRefresh(fn) {
+		this.routeSubscription = this.router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+				fn();
+			}
+		});
+	}
+	unsubscribeRouteRefresh() {
+		if (!this.routeSubscription) return;
+
+		this.routeSubscription.unsubscribe();
+		this.routeSubscription = null;
+	}
+
 }

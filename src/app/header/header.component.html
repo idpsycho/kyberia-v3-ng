@@ -6,12 +6,12 @@
 	</span>
  -->
 	<span *ngIf="loggedIn()">
-		<a routerLink="/mail" routerLinkActive="active">mail</a>
+		<a routerLink="/mail">mail</a>
 		/
 	</span>
 
 	<span *ngIf="loggedIn()">
-		<a routerLink="/topk" routerLinkActive="active">topK</a>
+		<a (click)="goTo('/topk')">topK</a>
 		/
 	</span>
 

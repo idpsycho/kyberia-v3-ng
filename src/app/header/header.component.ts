@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
+import { Router }				from '@angular/router';
 import { UserService } from '../services/user.service';
 
 
@@ -10,9 +11,16 @@ import { UserService } from '../services/user.service';
 })
 export class HeaderComponent {
 
-	constructor(public userService: UserService) { }
+	constructor(
+		public userService: UserService,
+		private router: Router,
+	) { }
 
 	loggedIn = () => {
 		return this.userService.isLoggedIn();
+	}
+
+	goTo = (route) => {
+		this.router.navigate([ route ]);
 	}
 }
