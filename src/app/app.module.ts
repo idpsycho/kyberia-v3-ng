@@ -13,6 +13,7 @@ import { TopkService }			from './topk/topk.service';
 
 // filters
 import {KeysPipe} 					from './filters/keys.pipe';
+import {UserIdToAvatarSrcPipe} 		from './filters/userIdToAvatarSrc.pipe';
 
 // components
 import { AppComponent }			from './app.component';
@@ -50,7 +51,9 @@ import { TopkComponent }		from './topk/topk.component';
 		MailComponent,
 		TopkComponent,
 
+		// pipes
 		KeysPipe,
+		UserIdToAvatarSrcPipe,
 	],
 	bootstrap: [
 		AppComponent

@@ -22,6 +22,10 @@ export class UserService {
 		return this.user;
 	}
 
+	getId = () => {
+		return this.user && this.user.userId;
+	}
+
 	getUserName = () => {
 		if (!this.user)
 			return '';
