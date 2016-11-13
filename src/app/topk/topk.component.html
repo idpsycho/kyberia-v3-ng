@@ -3,10 +3,27 @@
 	<div class="node" *ngFor="let node of topkNodes">
 
 		<div class="header clearfix">
-			<a href="#">{{node.creator}}</a> -
-			<a href="#">{{node.node_name}}</a> in
-			<a href="#">{{node.parent_name}}</a>
-			<button class="k">{{node.k}}</button>
+
+			<a href="#">
+				{{node.creator}}
+			</a>
+
+			-
+			<a href="#">
+				{{node.node_name}}
+			</a>
+
+			in
+			<a href="#">
+				{{node.parent_name}}
+			</a>
+
+			<button
+				class="k"
+				(click)="giveK(node)"
+			>
+				{{node.k}}
+			</button>
 		</div>
 
 		<div class="content">

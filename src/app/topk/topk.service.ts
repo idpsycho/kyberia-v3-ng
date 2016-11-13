@@ -4,13 +4,15 @@ import { Observable }	from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { HOST, V3API_OPTIONS } from '../../environments/environment';
+import { HOST, V3API_OPTIONS, extractJson } from '../../environments/environment';
 
 @Injectable()
 export class TopkService {
 
 	constructor (private http: Http) {}
 
+	///////////////////////////////////////////////////////////
+	// actions
 	getTopk(): Observable<Object> {
 
 		return this.http
@@ -18,22 +20,18 @@ export class TopkService {
 				HOST+'/id/15',
 				V3API_OPTIONS
 			)
-			.map(this.extractJson)
+			.map(extractJson)
 	}
+	giveK(id): Observable<Object> {
 
-	extractJson(res: Response) {
-		return res.json();
+		return this.http
+			.post(
+				HOST+'/id/'+id,
+				{
+					event: 'K',
+				},
+				V3API_OPTIONS
+			)
+			.map(extractJson)
 	}
-
-	v3apioptions() {
-		let headers = new Headers({
-			'v3api': 1,
-		})
-		let options = new RequestOptions({
-			headers:			headers,
-			withCredentials:	true,
-		});
-		return options;
-	}
-
 }

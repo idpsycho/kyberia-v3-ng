@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }				from '@angular/router';
 import { UserService } from '../services/user.service';
+import { AlertService }			from '../header.alert/alert.service';
 
 
 @Component({
@@ -13,11 +14,11 @@ export class LoginComponent {
 	user = null;
 	username = localStorage.getItem('lastLoginUsername') || 'ubik';
 	password = '...';
-	error = '';
 	loading = false;
 
 	constructor(
 		public userService: UserService,
+		private alertService: AlertService,
 		public router: Router,
 	) { }
 
@@ -32,13 +33,13 @@ export class LoginComponent {
 		this.loading = false;
 
 		if (!json.success) {
-			this.error = 'nepodarilo sa mi prihlasit :\'(';
+			this.alertService.error('nepodarilo sa mi prihlasit :\'(');
 			return;
 		}
 
 		localStorage.setItem('lastLoginUsername', this.username);
 		this.user = json;
-		this.error = '';
+		this.alertService.clear();
 
 		this.router.navigate([ '/mail' ]);
 	}

@@ -1,10 +1,10 @@
 import { Component, OnInit }	from '@angular/core';
-import { Router }				      from '@angular/router';
+import { Router }				from '@angular/router';
 
-import { MailService }				from './mail.service';
-import { UserService }				from '../services/user.service';
+import { MailService }			from './mail.service';
+import { UserService }			from '../services/user.service';
 
-import {KeysPipe} 						from '../filters/keys.pipe';
+import { KeysPipe } 			from '../filters/keys.pipe';
 
 
 
@@ -54,7 +54,7 @@ export class MailComponent implements OnInit {
 	onGotMails = (json) => {
 		const mails = json.mails;
 
-		if (!mails.length)
+		if (!mails || !mails.length)
 			return;
 
 		this.mailTo = mails[0].mail_to_name;

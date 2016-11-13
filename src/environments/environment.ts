@@ -3,7 +3,8 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
-import { Headers, RequestOptions  } from '@angular/http';
+import { Headers, RequestOptions, Response } from '@angular/http';
+
 let v3api_options = () => {
 	let headers = new Headers({
 		'v3api': 1,
@@ -20,9 +21,12 @@ export const environment = {
 	production: false,
 };
 
-export const HOST = 'http://v3api.brm.sk/';
-// export const HOST = 'http://kyberia-sk/';
+export const HOST = 'http://v3api.brm.sk';
+// export const HOST = 'http://v3api';
 
 export const V3API_OPTIONS = v3api_options();
 
+export const extractJson = (res: Response) => {
+	return res.json();
+}
 

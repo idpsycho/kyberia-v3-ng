@@ -12,7 +12,7 @@ export class AlertService {
 		return this.alertMessage;
 	}
 
-	alert = (msg) => {
+	error = (msg) => {
 		this.alertMessage = msg;
 	}
 
