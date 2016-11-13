@@ -1,6 +1,5 @@
 <div class="page-mail container">
 
-
 	<button
 		*ngIf="selectedUser"
 		style="width: 100%; line-height: 50px;"
@@ -12,8 +11,18 @@
 	<div class="users-view" *ngIf="!selectedUser && loaded">
 		<div class="user-list" *ngFor="let user of mailUsers">
 			<div class="user-item" (click)="selectUser(user)">
-				<div>{{getName(user.key, user.value[0])}}</div>
-				<div>{{user.value.length}}</div>
+				<div class="icon">
+					<img [src]="user.key | userIdToAvatarSrc">
+				</div>
+				<div class="msg">
+					<div class="header">
+						<div>{{getName(user.key, user.value[0])}}</div>
+						<div>{{user.value.length}}</div>
+					</div>
+					<div class="body">
+						{{user.value[0].mail_text}}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

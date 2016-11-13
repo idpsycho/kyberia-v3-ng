@@ -17,7 +17,7 @@ export class MailComponent implements OnDestroy {
 
 	mailTo = '';
 	mailText = '';
-	mailUsers;
+	mailUsers = [];
 	user = null;
 	selectedUser = null;
 	loaded = false;
@@ -104,6 +104,7 @@ export class MailComponent implements OnDestroy {
 		if (this.selectedUser) {
 			this.createUserMaillArr();
 		}
+
 		this.loaded = true;
 	}
 
