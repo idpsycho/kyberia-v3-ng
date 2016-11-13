@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }			from '@angular/router';
+import { Component, OnInit }	from '@angular/core';
+import { Router }				from '@angular/router';
 
-import { UserService }		from '../services/user.service';
+import { UserService }			from '../services/user.service';
+import { AlertService }			from '../header.alert/alert.service';
 
 
 @Component({
@@ -11,10 +12,10 @@ import { UserService }		from '../services/user.service';
 export class LogoutComponent {
 
 	user = null;
-	error = '';
 
 	constructor(
 		public userService: UserService,
+		private alertService: AlertService,
 		private router: Router,
 	) { }
 
@@ -26,12 +27,11 @@ export class LogoutComponent {
 
 	onLogout = (json) => {
 		if (!json.success) {
-			this.error = 'nepodarilo sa mi odhlasit :\'(';
+			this.alertService.error('nepodarilo sa mi odhlasit :\'(');
 			return;
 		}
 
 		this.user = null;
-		this.error = '';
 
 		this.router.navigate([ '/' ]);
 	}

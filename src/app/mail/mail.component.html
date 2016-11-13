@@ -27,7 +27,7 @@
 		</div>
 	</div>
 
-	<div class="mail-view" *ngIf="selectedUser">
+	<div class="mail-view" *ngIf="selectedUser || !mailUsers.length">
 		<div class="mail-form">
 			<label>
 				to
