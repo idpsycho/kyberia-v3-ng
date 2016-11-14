@@ -1,5 +1,6 @@
 textarea.message {
 	width: 85%;
+	margin: 8px 0;
 }
 
 .mail {
@@ -8,8 +9,21 @@ textarea.message {
 	padding: 8px;
 }
 
+.page-mail {
+	position: absolute;
+	top: 84px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+}
+
 .mail .header {
 	margin-bottom: 10px;
+}
+
+.mail-form {
+	margin: 20px;
 }
 
 .user-list {
@@ -38,4 +52,48 @@ textarea.message {
 .user-item .msg {
 	flex: 1;
 	margin-left: 15px;
+}
+
+.users-view {
+	position: absolute;
+	width: 400px;
+	left: 0;
+	top: 58px;
+	bottom: 0;
+	border-right: 10px solid #6dae42;
+}
+
+.mail-view {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	left: 400px;
+	right: 0;
+	top: 58px;
+	bottom: 0;
+	overflow: auto;
+}
+
+@media only screen and (max-device-width: 740px) {
+  .users-view {
+		left: 0;
+		width: 100%;
+    transition: all 0.35s linear;
+		border-right: 0;
+	}
+
+	.users-view.active-slide {
+		left: -100%;
+	}
+
+	.mail-view {
+		flex-direction: column-reverse;
+    left: 100%;
+    width: 100%;
+    transition: all 0.35s linear;
+	}
+
+	.mail-view.active-slide {
+		left: 0;
+	}
 }
