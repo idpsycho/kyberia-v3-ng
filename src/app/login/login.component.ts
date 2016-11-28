@@ -14,7 +14,7 @@ export class LoginComponent {
 
 	user = null;
 	username = localStorage.getItem('lastLoginUsername') || 'ubik';
-	password = '...';
+	password = 'heslo';
 	loading = false;
 
 	constructor(

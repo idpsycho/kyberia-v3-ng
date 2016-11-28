@@ -26,6 +26,10 @@ export class UserService {
 		return this.user && this.user.userId;
 	}
 
+	getAnticsrf = () => {
+		return this.user && this.user.anticsrf;
+	}
+
 	getUserName = () => {
 		if (!this.user)
 			return '';
@@ -57,6 +61,7 @@ export class UserService {
 				HOST,
 				{
 					event:		'logout',
+					anticsrf:	this.getAnticsrf(),
 				},
 				V3API_OPTIONS
 			)
@@ -74,8 +79,9 @@ export class UserService {
 			return json;
 
 		this.user = {
-			userId: json.userId,
-			userName: json.userName,
+			userId:		json.userId,
+			userName:	json.userName,
+			anticsrf:	json.anticsrf,
 		}
 		return json;
 	}
