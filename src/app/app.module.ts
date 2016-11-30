@@ -23,6 +23,8 @@ import { HeaderComponent }	from './header/header.component';
 import { LoginComponent }		from './login/login.component';
 import { LogoutComponent }	from './header.logout/logout.component';
 import { MailComponent }		from './mail/mail.component';
+import { MailUsersComponent }		from './mail.users/mail-users.component';
+import { MailThreadComponent }		from './mail.thread/mail-thread.component';
 import { TopkComponent }		from './topk/topk.component';
 
 
@@ -49,6 +51,8 @@ import { TopkComponent }		from './topk/topk.component';
 		MainComponent,
 		LoginComponent,
 		MailComponent,
+			MailThreadComponent,
+			MailUsersComponent,
 		TopkComponent,
 
 		// pipes

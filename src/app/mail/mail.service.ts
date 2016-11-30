@@ -32,8 +32,8 @@ export class MailService {
 			.map(this.extractJson)
 	}
 
-	getMails(): Observable<Object> {
-		
+	getMailData(): Observable<Object> {
+
 		return this.http
 			.get(
 				HOST+'/id/24',
@@ -44,6 +44,52 @@ export class MailService {
 
 	extractJson(res: Response) {
 		return res.json();
+	}
+
+	getUserMails(mailToUsername) {
+		console.log('mailToUsername', mailToUsername);
+
+		return this.getMails().map(function(mapUsers) {
+			console.log('sdasd');
+
+			return mapUsers[mailToUsername];
+		});
+	}
+
+	getMails() {
+		return this.getMailData().map(this.processUsersMails);
+	}
+
+	processUsersMails = (json) => {
+		let mapUsers = [];
+		let myUserId = this.userService.getId();
+		json.mails.forEach( mail => {
+			let otherUserId;
+			let otherUserName;
+
+			if (mail.mail_to == myUserId) {
+				otherUserId = mail.mail_from;
+				otherUserName = mail.mail_from_name;
+			} else {
+				otherUserId = mail.mail_to;
+				otherUserName = mail.mail_to_name;
+			}
+
+			if (!mapUsers[otherUserName]) {
+				mapUsers[otherUserName] = {
+					mails: [],
+					userId: otherUserId,
+					userName: otherUserName
+				};
+			}
+
+			mapUsers[otherUserName].mails.push( mail );
+		});
+
+		console.log('mapUsers', mapUsers);
+
+
+		return mapUsers;
 	}
 
 }

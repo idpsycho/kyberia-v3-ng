@@ -1,0 +1,49 @@
+<div class="mail-thread">
+	<div class="mail-view" [class.active-slide]="mailToUsername">
+
+		<button
+			style="width: 100%; line-height: 50px;"
+			(click)="goBack()"
+		>
+			spat na vsetkych
+		</button>
+
+		<div class="mail-form">
+			<label>
+				to
+				<input
+					placeholder="username"
+					[(ngModel)]="mailToUsername"
+					value="ubik"
+				>
+			</label>
+			<br>
+			<textarea
+				class="message"
+				placeholder="message"
+				[(ngModel)]="mailText"
+			></textarea>
+			<br>
+			<button (click)="send()">
+				send
+			</button>
+		</div>
+
+		<br>
+		<br>
+		<div class="mail-messages">
+			<div class="mail" *ngFor="let mail of userMails">
+				<div class="header">
+					{{mail.mail_from_name}}
+					-&gt;
+					{{mail.mail_to_name}}
+					&nbsp; &nbsp;
+					{{mail.cas}}
+				</div>
+				<div class="message">
+					{{mail.mail_text}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

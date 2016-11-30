@@ -1,0 +1,20 @@
+<div class="mail-users">
+	<div class="users-view" *ngIf="mapUsers">
+		<div class="user-list" *ngFor="let user of mapToArr(mapUsers)">
+			<div class="user-item" (click)="showThread(user.userName, user.userId)">
+				<div class="icon">
+					<img [src]="user.userId | userIdToAvatarSrc">
+				</div>
+				<div class="msg">
+					<div class="header">
+						<div>{{user.userName}}</div>
+						<div>{{user.mails.length}}</div>
+					</div>
+					<div class="body">
+						{{user.mails[0].mail_text}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
