@@ -46,11 +46,13 @@ export class MailComponent implements OnDestroy {
 			.subscribe(mapUsers => { this.mapUsers = mapUsers; });
 	}
 
-	routeSubscription = null;
+
 
 
 	/////////////////////////////////////////////////////
-	// toto sluzi na to, aby sa refreshovala routa
+	// toto sluzi na to, aby sa refreshovala routa - potom to refaktorneme na decorator
+
+	routeSubscription = null;
 
 	ngOnDestroy() {
 		this.unsubscribeRouteRefresh();
