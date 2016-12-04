@@ -1,0 +1,97 @@
+body, html {
+  background: black;
+  padding: 0;
+  margin: 0;
+
+}
+
+body {
+  color: $green;
+  font-family: Tahoma;
+  font-size: 14px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
+}
+
+input, textarea {
+  font-family: 'Roboto Mono', monospace;
+  border: 1px solid $green;
+  background: black;//#333;
+  color: white;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+}
+
+button {
+  font-family: 'Roboto Mono', monospace;
+  background: black;
+  border: 1px solid $green;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: #333;
+  }
+
+  &.k {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+
+.green{
+  color: $green;
+}
+
+
+.user-format{
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.container {
+  width: 100%;
+  /*overflow-x: hidden;*/
+}
+
+.container-padded {
+  padding: 20px;
+}
+
+.container-fullscreen {
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

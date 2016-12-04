@@ -6,14 +6,25 @@
 	</span>
  -->
 	<span *ngIf="loggedIn()">
-		<a routerLink="/mail">mail</a>
-		/
+		<a routerLink="/mail" routerLinkActive="active">msg</a>
+		<span class="green">/</span>
 	</span>
 
 	<span *ngIf="loggedIn()">
-		<a (click)="goTo('/topk')">topK</a>
-		/
+		<a routerLink="/topk" routerLinkActive="active">topK</a>
+		<span class="green">/</span>
 	</span>
+
+	<span *ngIf="loggedIn()">
+		bkmrkz
+		<span class="green">/</span>
+	</span>
+
+	<span *ngIf="loggedIn()">
+		user
+		<span class="green">/</span>
+	</span>
+
 
 	<span *ngIf="loggedIn()">
 		<logout></logout>

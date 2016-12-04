@@ -8,7 +8,7 @@ import { UserService }			from '../services/user.service';
 @Component({
 	selector: 'mail',
 	templateUrl: './mail.component.html',
-	styleUrls: ['./mail.component.css']
+	styleUrls: ['../../assets/sass/_variables.scss', 'mail.component.scss'],
 })
 export class MailComponent implements OnDestroy {
 	mapUsers = [];

@@ -1,3 +1,5 @@
+@import "../../assets/sass/variables";
+
 textarea.message {
 	width: 85%;
 	margin: 8px 0;
@@ -11,11 +13,12 @@ textarea.message {
 
 .page-mail {
 	position: absolute;
-	top: 84px;
+	top: 40px;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	overflow: hidden;
+	overflow-y: scroll;
 }
 
 .mail .header {
@@ -30,28 +33,29 @@ textarea.message {
 }
 
 .user-item {
-	border-bottom: 1px solid #6dae42;
+	border-bottom: 1px solid $green;
 	padding: 15px;
 	display: flex;
-}
+	&:hover {
+		cursor: pointer;
+		background-color: #444;
+	}
 
-.user-item:hover {
-	cursor: pointer;
-	background-color: #444;
-}
+	.icon {
 
-.user-item .icon {
-}
+	}
 
-.user-item .header {
-	color: white;
-	display: flex;
-	justify-content: space-between;
-}
+	.header {
+		color: white;
+		display: flex;
+		justify-content: space-between;
+	}
 
-.user-item .msg {
-	flex: 1;
-	margin-left: 15px;
+	.msg {
+		flex: 1;
+		margin-left: 15px;
+	}
+
 }
 
 .users-view {
@@ -60,7 +64,7 @@ textarea.message {
 	left: 0;
 	top: 58px;
 	bottom: 0;
-	border-right: 10px solid #6dae42;
+	border-right: 10px solid $green;
 }
 
 .mail-view {
@@ -75,10 +79,10 @@ textarea.message {
 }
 
 @media only screen and (max-width: 740px) {
-  .users-view {
+	.users-view {
 		left: 0;
 		width: 100%;
-    transition: all 0.35s linear;
+		transition: all 0.35s linear;
 		border-right: 0;
 	}
 
@@ -88,9 +92,9 @@ textarea.message {
 
 	.mail-view {
 		flex-direction: column-reverse;
-    left: 100%;
-    width: 100%;
-    transition: all 0.35s linear;
+		left: 100%;
+		width: 100%;
+		transition: all 0.35s linear;
 	}
 
 	.mail-view.active-slide {

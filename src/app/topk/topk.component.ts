@@ -8,7 +8,7 @@ import { UserService }			from '../services/user.service';
 @Component({
 	selector: 'topk',
 	templateUrl: './topk.component.html',
-	styleUrls: ['./topk.component.css']
+	styleUrls: ['topk.component.scss']
 })
 // export class TopkComponent {
 export class TopkComponent implements OnDestroy {

@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 @Component({
 	selector: 'header-v3',
 	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.css'],
+	styleUrls: ['header.component.scss'],
 	encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent {

@@ -1,12 +1,15 @@
+@import "../../assets/sass/variables";
+
 .header-v3 {
 	text-align: center;
 	font-family: 'Roboto Mono', monospace;
+	font-weight: 100;
 	/*background: #6dae42;*/
-	border-bottom: 1px solid #6dae42;
+	border-bottom: 1px solid $green;
 	color: #444;
 	line-height: 40px;
 }
 
-.header-v3 a {
-	padding: 15px 25px;
+.header-v3 a.active {
+	font-weight: 500;
 }

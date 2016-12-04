@@ -17,20 +17,16 @@
 					value="ubik"
 				>
 			</label>
-			<br>
 			<textarea
 				class="message"
 				placeholder="message"
 				[(ngModel)]="mailText"
 			></textarea>
-			<br>
 			<button (click)="send()">
 				send
 			</button>
 		</div>
 
-		<br>
-		<br>
 		<div class="mail-messages">
 			<div class="mail" *ngFor="let mail of userMails">
 				<div class="header">
