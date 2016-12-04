@@ -4,12 +4,15 @@ import { MailService } from '../mail/mail.service';
 @Component({
 	selector: 'mail-thread',
 	templateUrl: './mail-thread.component.html',
+	styleUrls: ['mail-thread.component.scss'],
+
 })
 export class MailThreadComponent {
 	@Input() mailToUsername;
 	@Input() goBack;
 	mailText = '';
 	userMails = [];
+	areaSize = 27;
 
 	constructor(private mailService: MailService) {}
 
@@ -42,4 +45,10 @@ export class MailThreadComponent {
 		this.mailText = '';
 		this.userMails = userMails && userMails.mails;
 	};
+
+	resizeArea(){
+		var fakeArea = document.getElementById("fakeArea");
+		this.areaSize = (fakeArea.offsetHeight + 3);
+	}
+
 }

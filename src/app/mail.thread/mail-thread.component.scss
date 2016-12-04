@@ -1,0 +1,42 @@
+@import "../../assets/sass/variables";
+
+.mail-form{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  z-index: 100;
+
+  label{
+    display: none;
+  }
+  textarea{
+    height: 27px;
+    line-height: 15px;
+    flex-grow: 1;
+    border-right: 0;
+  }
+
+  #fakeArea{
+    position: absolute;
+    left: 5px;
+    right: 55px;
+    bottom: 0;
+    z-index: -1;
+    margin: 0;
+
+    line-height: 15px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-family: 'Roboto Mono', monospace;
+    box-sizing: border-box;
+  }
+}
+
+.mail-messages{
+  .meta{
+    display: none;
+  }
+}

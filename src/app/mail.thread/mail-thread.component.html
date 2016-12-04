@@ -1,8 +1,7 @@
 <div class="mail-thread">
 	<div class="mail-view" [class.active-slide]="mailToUsername">
 
-		<button
-			style="width: 100%; line-height: 50px;"
+		<button class="back"
 			(click)="goBack()"
 		>
 			spat na vsetkych
@@ -20,8 +19,12 @@
 			<textarea
 				class="message"
 				placeholder="message"
+				[style.height]="areaSize+'px'"
+				(keydown)="resizeArea()"
+				(keyup)="resizeArea()"
 				[(ngModel)]="mailText"
 			></textarea>
+			<pre id="fakeArea">{{mailText}}...</pre>
 			<button (click)="send()">
 				send
 			</button>
@@ -30,11 +33,16 @@
 		<div class="mail-messages">
 			<div class="mail" *ngFor="let mail of userMails">
 				<div class="header">
-					{{mail.mail_from_name}}
-					-&gt;
-					{{mail.mail_to_name}}
-					&nbsp; &nbsp;
-					{{mail.cas}}
+					<div class="icon">
+						<img [src]="mail.mail_from | userIdToAvatarSrc">
+					</div>
+					<div class="meta">
+						{{mail.mail_from_name}}
+						-&gt;
+						{{mail.mail_to_name}}
+						&nbsp; &nbsp;
+						{{mail.cas}}
+					</div>
 				</div>
 				<div class="message">
 					{{mail.mail_text}}
