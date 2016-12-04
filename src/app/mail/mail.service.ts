@@ -83,7 +83,18 @@ export class MailService {
 				};
 			}
 
-			mapUsers[otherUserName].mails.push( mail );
+			let mails = mapUsers[otherUserName].mails;
+			if (mails.length === 0) {
+				mails.push([mail] );
+			} else {
+				if (mails[mails.length - 1][0].mail_to === mail.mail_to) {
+					mails[mails.length - 1].push(mail);
+				} else {
+					mails.push([mail] );
+				}
+			}
+
+			// mapUsers[otherUserName].mails.push( mail );
 		});
 
 		console.log('mapUsers', mapUsers);

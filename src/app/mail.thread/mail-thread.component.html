@@ -33,24 +33,24 @@
 		<div class="mail-messages">
 			<div class="mail"
 				[ngClass]="{
-					'send': userId == mail.mail_from,
-					'recieved': userId == mail.mail_to
+					'send': userId == mailGroup[0].mail_from,
+					'recieved': userId == mailGroup[0].mail_to
 				}"
-				*ngFor="let mail of userMails"
+				*ngFor="let mailGroup of userMails"
 			>
 				<div class="header">
 					<div class="icon">
-						<img [src]="mail.mail_from | userIdToAvatarSrc">
+						<img [src]="mailGroup[0].mail_from | userIdToAvatarSrc">
 					</div>
 					<div class="meta">
-						{{mail.mail_from_name}}
+						{{mailGroup[0].mail_from_name}}
 						-&gt;
-						{{mail.mail_to_name}}
+						{{mailGroup[0].mail_to_name}}
 						&nbsp; &nbsp;
-						{{mail.cas}}
+						{{mailGroup[0].cas}}
 					</div>
 				</div>
-				<div class="message">
+				<div class="message" *ngFor="let mail of mailGroup">
 					{{mail.mail_text}}
 				</div>
 			</div>
