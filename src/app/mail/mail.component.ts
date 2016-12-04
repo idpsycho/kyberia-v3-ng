@@ -47,8 +47,6 @@ export class MailComponent implements OnDestroy {
 	}
 
 
-
-
 	/////////////////////////////////////////////////////
 	// toto sluzi na to, aby sa refreshovala routa - potom to refaktorneme na decorator
 

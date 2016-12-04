@@ -7,7 +7,6 @@ import 'rxjs/add/operator/catch';
 import { UserService }			from '../services/user.service';
 import { HOST, V3API_OPTIONS } from '../../environments/environment';
 
-
 @Injectable()
 export class MailService {
 
@@ -82,7 +81,6 @@ export class MailService {
 					userName: otherUserName
 				};
 			}
-
 			let mails = mapUsers[otherUserName].mails;
 			if (mails.length === 0) {
 				mails.push([mail] );
