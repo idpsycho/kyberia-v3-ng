@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500');
+// TODO: use local font, not google cdn
+
 $green: #6dae42;
+
+.green{
+	color: $green;
+}
 
 body, html {
 	background: black;
@@ -23,12 +30,12 @@ a {
 }
 
 input, textarea {
-	font-family: monospace;
+	font-family: 'Roboto Mono', monospace;
 	border: 1px solid $green;
 	background: black;//#333;
 	color: white;
-	padding: 3px 6px;
-	margin: 6px;
+	padding: 5px 10px;
+	box-sizing: border-box;
 }
 
 textarea {
@@ -37,10 +44,11 @@ textarea {
 }
 
 button {
+	font-family: 'Roboto Mono', monospace;
 	background: black;
 	border: 1px solid $green;
 	color: white;
-	padding: 3px 8px;
+	padding: 5px 10px;
 	cursor: pointer;
 
 	&:hover {

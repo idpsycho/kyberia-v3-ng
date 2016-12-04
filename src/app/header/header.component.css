@@ -1,9 +1,10 @@
 .header-v3 {
 	text-align: center;
+	font-family: 'Roboto Mono', monospace;
 	/*background: #6dae42;*/
 	border-bottom: 1px solid #6dae42;
 	color: #444;
-	line-height: 80px;
+	line-height: 40px;
 }
 
 .header-v3 a {

@@ -1,29 +1,52 @@
 <div class="page-login container-fullscreen">
 
 	<form>
+		<label for="username">user::</label>
 		<input
+			id="username"
 			placeholder="login"
 			name="username"
 			[(ngModel)]="username"
 			type="text"
 		>
-		<br>
 
+		<label for="password">pass::</label>
 		<input
+			id="password"
 			placeholder="heslo"
 			name="password"
 			[(ngModel)]="password"
 			type="password"
 		>
-		<br>
 
-		<button
-			type="submit"
-			(click)="login()"
-			(disabled)="this.loading"
-		>
-			login
-		</button>
+		<div class="login-actions">
+			<button
+				type="submit"
+				(click)="login()"
+				(disabled)="this.loading"
+			>
+				login
+			</button>
+
+			<label for="name">name::
+				<input
+					type="radio"
+					id="name"
+					name="loginType"
+					value="login"
+					checked
+				>
+			</label>
+			<label for="id">id::
+				<input
+					type="radio"
+					id="id"
+					name="loginType"
+					value="id"
+					checked
+				>
+			</label>
+		</div>
 	</form>
 
 </div>
