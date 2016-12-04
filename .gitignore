@@ -1,6 +1,7 @@
 # put any local user-specific files here
 /.user
 /.vscode
+/.idea
 
 # common stuff
 /node_modules
