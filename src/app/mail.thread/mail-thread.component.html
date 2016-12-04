@@ -31,7 +31,13 @@
 		</div>
 
 		<div class="mail-messages">
-			<div class="mail" *ngFor="let mail of userMails">
+			<div class="mail"
+				[ngClass]="{
+					'send': userId == mail.mail_from,
+					'recieved': userId == mail.mail_to
+				}"
+				*ngFor="let mail of userMails"
+			>
 				<div class="header">
 					<div class="icon">
 						<img [src]="mail.mail_from | userIdToAvatarSrc">

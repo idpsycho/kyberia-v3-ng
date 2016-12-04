@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MailService } from '../mail/mail.service';
+import { UserService } from '../services/user.service';
 
 @Component({
 	selector: 'mail-thread',
@@ -13,8 +14,14 @@ export class MailThreadComponent {
 	mailText = '';
 	userMails = [];
 	areaSize = 27;
+	userId = '';
 
-	constructor(private mailService: MailService) {}
+	constructor(
+		private mailService: MailService,
+		private userService: UserService
+	) {
+		this.userId = this.userService.getId();
+	}
 
 	ngOnInit() {
 		this.loadUserMails();
