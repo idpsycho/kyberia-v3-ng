@@ -54,7 +54,8 @@ export class MailThreadComponent {
 	};
 
 	resizeArea(){
-		var fakeArea = document.getElementById("fakeArea");
+		let fakeArea = document.getElementById("fakeArea");
+		document.getElementsByClassName("page-mail")[0].
 		this.areaSize = (fakeArea.offsetHeight + 3);
 	}
 

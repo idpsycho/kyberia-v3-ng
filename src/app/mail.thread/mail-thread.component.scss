@@ -36,6 +36,9 @@
 }
 
 .mail-messages{
+  display: flex;
+  flex-direction: column-reverse;
+
   .meta{
     display: none;
   }
