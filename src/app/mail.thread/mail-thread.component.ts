@@ -46,6 +46,18 @@ export class MailThreadComponent {
 		this.mailService
 			.getUserMails(this.mailToUsername)
 			.subscribe(this.updateUserMails);
+
+		this.offsetContainer(this.areaSize + 10);
+
+	}
+
+	scrollMessages(){
+		let container = document.getElementsByClassName("page-mail")[0];
+		container.scrollTop = container.scrollHeight;
+	}
+
+	offsetContainer(height){
+		document.getElementsByClassName("page-mail")[0].setAttribute("style", "bottom: " + (height) + "px");
 	}
 
 	updateUserMails = (userMails) => {
@@ -55,7 +67,11 @@ export class MailThreadComponent {
 
 	resizeArea(){
 		let fakeArea = document.getElementById("fakeArea");
+
 		this.areaSize = (fakeArea.offsetHeight + 3);
+		this.scrollMessages();
+
+		this.offsetContainer(this.areaSize + 10);
 	}
 
 }

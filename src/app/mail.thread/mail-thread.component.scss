@@ -35,9 +35,52 @@
   }
 }
 
+.back{
+  position: fixed;
+  top: 40px;
+  width: 100%;
+}
+
+.mail-thread{
+  margin-top: 42px;
+}
+
 .mail-messages{
   display: flex;
   flex-direction: column-reverse;
+
+  .messages{
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+
+  .message{
+    margin-top: 5px;
+  }
+
+  .icon{
+    padding: 5px 10px;
+    padding-bottom: 0;
+    img{
+      display: block;
+    }
+  }
+
+  .mail{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    &.send{
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .messages{
+      flex-grow: 1;
+    }
+
+  }
 
   .meta{
     display: none;

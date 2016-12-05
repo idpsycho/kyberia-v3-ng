@@ -50,8 +50,11 @@
 						{{mailGroup[0].cas}}
 					</div>
 				</div>
-				<div class="message" *ngFor="let mail of mailGroup">
-					{{mail.mail_text}}
+				<div class="messages">
+					<div class="message" *ngFor="let mail of mailGroup">
+						{{mail.mail_text}}
+						{{scrollMessages()}}
+					</div>
 				</div>
 			</div>
 		</div>
