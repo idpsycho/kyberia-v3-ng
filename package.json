@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\" --config setup/tslint.json",
-    "heroku-prebuild": "npm install http-server",
+    "heroku-prebuild": "npm install -g http-server",
     "heroku-postbuild": "ng build && http-server ./build"
   },
   "private": true,
