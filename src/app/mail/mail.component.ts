@@ -38,6 +38,8 @@ export class MailComponent implements OnDestroy {
 
 	goBack = () => {
 		this.mailToUsername = '';
+
+		document.getElementsByClassName("page-mail")[0].setAttribute("style", "bottom: 0px");
 	}
 
 	loadMails = () => {
