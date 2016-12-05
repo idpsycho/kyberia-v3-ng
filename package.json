@@ -5,7 +5,8 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\" --config setup/tslint.json"
+    "lint": "tslint \"src/**/*.ts\" --config setup/tslint.json",
+    "heroku-postbuild": "ng serve"
   },
   "private": true,
   "dependencies": {
