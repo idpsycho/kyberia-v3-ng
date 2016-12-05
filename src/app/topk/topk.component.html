@@ -8,30 +8,26 @@
 				class="avatar"
 				[src]="node.node_creator | userIdToAvatarSrc"
 			>
-
-			<div class="padded">
-				<a href="#">
+			<div class="meta">
+				<span href="#" class="user-format green">
 					{{node.creator}}
-				</a>
+				</span>
 
-				-
-				<a href="#">
-					{{node.node_name}}
-				</a>
-
+				<span href="#">
+						{{node.node_name}}
+					</span>
 				in
-				<a href="#">
-					{{node.parent_name}}
-				</a>
-
-				<button
-					class="k"
-					(click)="giveK(node)"
-					[ngClass]="{'k-given': node._kGiven}"
-				>
-					{{node.k}}
-				</button>
+				<span href="#">
+						{{node.parent_name}}
+					</span>
 			</div>
+			<button
+				class="k"
+				(click)="giveK(node)"
+				[ngClass]="{'k-given': node._kGiven}"
+			>
+				{{node.k}}k
+			</button>
 
 		</div>
 

@@ -2,29 +2,37 @@
 
 .node {
 	padding-bottom: 50px;
+
+	> .content {
+		padding: 10px;
+		max-width: 600px;
+		margin: 0 auto;
+	}
 }
 
-.node > .header {
+.header {
 	background: #333;
-	padding: 15px;
-	padding-left: 60px;
-	position: relative;
-}
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
-.header .avatar {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 50px;
-	max-height: 50px;
-}
+	.meta{
+		flex-grow: 1;
+	}
 
-.node > .content {
-	padding: 15px;
+	.user-format{
+		display: block;
+	}
+
+	.avatar {
+		width: 50px;
+		margin-right: 10px;
+	}
 }
 
 button.k {
-	float: right;
+	margin-right: 10px;
 }
 
 .k.k-given {
