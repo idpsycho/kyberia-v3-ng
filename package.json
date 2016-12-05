@@ -4,10 +4,10 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "http-server ./build",
+    "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\" --config setup/tslint.json",
-    "heroku-prebuild": "npm install -g http-server",
-    "heroku-postbuild": "ng build"
+    "heroku-prebuild": "npm install http-server",
+    "heroku-postbuild": "ng build && http-server ./build"
   },
   "private": true,
   "dependencies": {
