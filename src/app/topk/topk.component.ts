@@ -63,12 +63,9 @@ export class TopkComponent implements OnDestroy {
 		this.topkNodes = json.topk;
 	}
 	updateGivenK = (json, node) => {
-		if (!json.success) {
-			this.alertService.error('nepodarilo sa dat kacko');
-			return;
-		}
+		if (json.success)
+			node.k++;
 
-		node.k++;
 		node._kGiven = true;
 	}
 
