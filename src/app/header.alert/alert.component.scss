@@ -13,11 +13,21 @@
 	opacity: 0.9;
 	cursor: pointer;
 
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	height: 80px;
 	padding: 10px 30px;
 
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
 	justify-content: center;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
 	display: flex;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
 	align-items: center;
 }
