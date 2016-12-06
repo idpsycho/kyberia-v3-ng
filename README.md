@@ -23,3 +23,5 @@
 
     ale treba to spravit nejak cez heroku-build scripty, nezasierat bezne dev veci (nech sa nemiesaju dependencies heroku s dependencies projektu, nech sa da lahko vyoperovat heroku prec a pouzit ine prostredie, bez toho ze zostanu zabudnute pozostatky kadetade)
 
+3. fastclick.js dat ako dependency (zabera viac ako cely zvysok projektu)
+
