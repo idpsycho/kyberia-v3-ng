@@ -4,6 +4,7 @@
 	padding-bottom: 50px;
 
 	> .content {
+		word-break: break-all;
 		padding: 10px;
 		max-width: 600px;
 		margin: 0 auto;
@@ -13,11 +14,24 @@
 .header {
 	background: #333;
 	overflow: hidden;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
 	display: flex;
+	-ms-flex-direction: row;
+	-webkit-flex-direction: row;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
 	flex-direction: row;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
 	align-items: center;
 
 	.meta{
+		-ms-flex-positive: 1;
+		-webkit-flex-grow: 1;
+		-webkit-box-flex: 1;
 		flex-grow: 1;
 		word-break: break-all;
 	}

@@ -35,6 +35,9 @@ textarea.message {
 .user-item {
 	border-bottom: 1px solid $green;
 	padding: 15px;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
 	display: flex;
 	&:hover {
 		cursor: pointer;
@@ -47,11 +50,20 @@ textarea.message {
 
 	.header {
 		color: white;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: -webkit-box;
 		display: flex;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		-webkit-box-pack: justify;
 		justify-content: space-between;
 	}
 
 	.msg {
+		-ms-flex: 1;
+		-webkit-flex: 1;
+		-webkit-box-flex: 1;
 		flex: 1;
 		margin-left: 15px;
 	}
@@ -68,7 +80,14 @@ textarea.message {
 }
 
 .mail-view {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
 	display: flex;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
 	flex-direction: column;
 	position: absolute;
 	left: 400px;
@@ -82,6 +101,7 @@ textarea.message {
 	.users-view {
 		left: 0;
 		width: 100%;
+		-webkit-transition: all 0.35s linear;
 		transition: all 0.35s linear;
 		border-right: 0;
 	}
@@ -91,9 +111,14 @@ textarea.message {
 	}
 
 	.mail-view {
+		-ms-flex-direction: column-reverse;
+		-webkit-flex-direction: column-reverse;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: reverse;
 		flex-direction: column-reverse;
 		left: 100%;
 		width: 100%;
+		-webkit-transition: all 0.35s linear;
 		transition: all 0.35s linear;
 	}
 
