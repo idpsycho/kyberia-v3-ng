@@ -1,8 +1,9 @@
 @import "../../assets/sass/variables";
 
-.user-list{
+.user-item-wrapper{
   border-bottom: 1px solid $green;
   position: relative;
+  cursor: pointer;
 }
 
 .user-item{
