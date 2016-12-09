@@ -1,130 +1,130 @@
 @import "../../assets/sass/variables";
 
-.mail-form{
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: -webkit-box;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 5px;
-  z-index: 100;
+.mail-form {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 5px;
+	z-index: 100;
 
-  label{
-    display: none;
-  }
-  textarea{
-    height: 27px;
-    line-height: 15px;
-    -ms-flex-positive: 1;
-    -webkit-flex-grow: 1;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    border-right: 0;
-  }
+	label {
+		display: none;
+	}
+	textarea {
+		height: 27px;
+		line-height: 15px;
+		-ms-flex-positive: 1;
+		-webkit-flex-grow: 1;
+		-webkit-box-flex: 1;
+		flex-grow: 1;
+		border-right: 0;
+	}
 
-  #fakeArea{
-    position: absolute;
-    left: 5px;
-    right: 55px;
-    bottom: 0;
-    z-index: -1;
-    margin: 0;
-    word-break: break-all;
-    white-space: pre-wrap;
-    line-height: 15px;
-    padding: 5px 10px;
-    font-size: 11px;
-    font-family: 'Roboto Mono', monospace;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+	#fakeArea {
+		position: absolute;
+		left: 5px;
+		right: 55px;
+		bottom: 0;
+		z-index: -1;
+		margin: 0;
+		word-break: break-all;
+		white-space: pre-wrap;
+		line-height: 15px;
+		padding: 5px 10px;
+		font-size: 11px;
+		font-family: 'Roboto Mono', monospace;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
 }
 
-.back{
-  position: fixed;
-  top: 40px;
-  width: 100%;
+.back {
+	position: fixed;
+	top: 40px;
+	width: 100%;
 }
 
-.mail-thread{
-  margin-top: 42px;
+.mail-thread {
+	margin-top: 42px;
 }
 
-.mail-messages{
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-direction: column-reverse;
-  -webkit-flex-direction: column-reverse;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-  flex-direction: column-reverse;
+.mail-messages {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -webkit-box;
+	display: flex;
+	-ms-flex-direction: column-reverse;
+	-webkit-flex-direction: column-reverse;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: reverse;
+	flex-direction: column-reverse;
 
-  .messages{
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-direction: column-reverse;
-    -webkit-flex-direction: column-reverse;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    flex-direction: column-reverse;
+	.messages {
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: -webkit-box;
+		display: flex;
+		-ms-flex-direction: column-reverse;
+		-webkit-flex-direction: column-reverse;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: reverse;
+		flex-direction: column-reverse;
 
-  }
+	}
 
-  .message{
-    margin-top: 5px;
-    word-break: break-all;
-  }
+	.message {
+		margin-top: 5px;
+		word-break: break-all;
+	}
 
-  .icon{
-    padding: 5px 10px;
-    padding-bottom: 0;
-    img{
-      display: block;
-    }
-  }
+	.icon {
+		padding: 5px 10px;
+		padding-bottom: 0;
+		img {
+			display: block;
+		}
+	}
 
-  .mail{
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-direction: row;
-    -ms-flex-align: end;
-    -webkit-align-items: flex-end;
-    -webkit-box-align: end;
-    align-items: flex-end;
-    margin-top: 15px;
+	.mail {
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: -webkit-box;
+		display: flex;
+		-ms-flex-direction: row;
+		-webkit-flex-direction: row;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		flex-direction: row;
+		-ms-flex-align: end;
+		-webkit-align-items: flex-end;
+		-webkit-box-align: end;
+		align-items: flex-end;
+		margin-top: 15px;
 
-    &.send{
-      -ms-flex-direction: row-reverse;
-      -webkit-flex-direction: row-reverse;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: reverse;
-      flex-direction: row-reverse;
-      text-align: right;
-    }
+		&.send {
+			-ms-flex-direction: row-reverse;
+			-webkit-flex-direction: row-reverse;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: reverse;
+			flex-direction: row-reverse;
+			text-align: right;
+		}
 
-    .messages{
-      -ms-flex-positive: 1;
-      -webkit-flex-grow: 1;
-      -webkit-box-flex: 1;
-      flex-grow: 1;
-    }
+		.messages {
+			-ms-flex-positive: 1;
+			-webkit-flex-grow: 1;
+			-webkit-box-flex: 1;
+			flex-grow: 1;
+		}
 
-  }
+	}
 
-  .meta{
-    display: none;
-  }
+	.meta {
+		display: none;
+	}
 }
