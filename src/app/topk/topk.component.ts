@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy }	from '@angular/core';
-import { Router, NavigationEnd }				from '@angular/router';
+import { Router, NavigationEnd }		from '@angular/router';
 
-import { TopkService }			from './topk.service';
-import { AlertService }			from '../header.alert/alert.service';
-import { UserService }			from '../services/user.service';
+import { TopkService }					from './topk.service';
+import { AlertService }					from '../header.alert/alert.service';
+import { UserService }					from '../_shared/user.service';
 
 @Component({
 	selector: 'topk',

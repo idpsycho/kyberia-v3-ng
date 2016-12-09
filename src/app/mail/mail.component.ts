@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy }	from '@angular/core';
-import { Router, NavigationEnd }				from '@angular/router';
-import { KeysPipe } 			from '../filters/keys.pipe';
+import { Router, NavigationEnd }		from '@angular/router';
 
-import { MailService }			from './mail.service';
-import { UserService }			from '../services/user.service';
+import { KeysPipe } 					from '../_shared/_pipes/keys.pipe';
+import { MailService }					from './mail.service';
+import { UserService }					from '../_shared/user.service';
 
 @Component({
 	selector: 'mail',

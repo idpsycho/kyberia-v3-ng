@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { MailService } from '../mail/mail.service';
-import { UserService } from '../services/user.service';
+import { Component, Input }		from '@angular/core';
+import { MailService }			from '../mail/mail.service';
+import { UserService }			from '../_shared/user.service';
 
 @Component({
 	selector: 'mail-thread',
