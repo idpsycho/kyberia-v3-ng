@@ -5,7 +5,7 @@
 	"angular-cli": {},
 	"scripts": {
 		"lint": "tslint \"src/**/*.ts\" --config setup/tslint.json",
-		"start": "pushstate-server ./build 8080",
+		"start": "pushstate-server ./build",
 		"start localhost": "ng serve",
 		"heroku-postbuild": "ng build"
 	},
