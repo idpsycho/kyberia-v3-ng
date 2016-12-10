@@ -6,6 +6,7 @@ import { HttpModule }			from '@angular/http';
 import { AppRouting }			from './app.routing';
 
 // services
+import { Httpv3 }				from './_shared/_services/httpv3.service';
 import { UserService }			from './_shared/user.service';
 import { AlertService }			from './header.alert/alert.service';
 import { MailService }			from './mail/mail.service';
@@ -36,8 +37,9 @@ import { TopkComponent }		from './topk/topk.component';
 		AppRouting
 	],
 	providers: [
-		AlertService,
+		Httpv3,
 		UserService,
+		AlertService,
 		MailService,
 		TopkService,
 	],

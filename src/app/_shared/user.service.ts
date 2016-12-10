@@ -1,10 +1,9 @@
-import { Injectable }	from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable }	from 'rxjs/Observable';
+import { Injectable }			from '@angular/core';
+import { Observable }			from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { HOST, V3API_OPTIONS } from '../../environments/environment';
+import { Httpv3 }				from './_services/httpv3.service';
 
 
 @Injectable()
@@ -12,7 +11,9 @@ export class UserService {
 
 	user = null;
 
-	constructor (private http: Http) {}
+	constructor (
+		private httpv3: Httpv3,
+	) {}
 
 	isLoggedIn = () => {
 		return this.user;
@@ -39,49 +40,46 @@ export class UserService {
 
 	login(username, password): Observable<Object> {
 
-		return this.http
+		return this.httpv3
 			.post(
-				HOST,
+				'',
 				{
 					event:		'login',
 					login:		username,
 					password:	password,
 					login_type:	'name',
-				},
-				V3API_OPTIONS
+				}
 			)
-			.map(this.extractJson)
 			.map(this.setUserData)
 	}
 
 	logout(): Observable<Object> {
 
-		return this.http
+		return this.httpv3
 			.post(
-				HOST,
+				'',
 				{
 					event:		'logout',
-					anticsrf:	this.getAnticsrf(),
 				},
-				V3API_OPTIONS
 			)
-			.map(this.extractJson)
 			.map(this.setUserData)
 	}
 
-	extractJson(res: Response) {
-		return res.json();
-	}
-
 	setUserData = (json) => {
-		this.user = null;
-		if (!json.userId)
-			return json;
+		if (!json.userId) {
 
-		this.user = {
-			userId:		json.userId,
-			userName:	json.userName,
-			anticsrf:	json.anticsrf,
+			this.httpv3.setAnticsrf('');
+			this.user = null;
+		}
+		else {
+
+			this.httpv3.setAnticsrf(json.anticsrf);
+
+			this.user = {
+				userId:		json.userId,
+				userName:	json.userName,
+				anticsrf:	json.anticsrf,
+			}
 		}
 		return json;
 	}

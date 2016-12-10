@@ -1,42 +1,31 @@
 import { Injectable }						from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable }						from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 import { UserService }						from '../_shared/user.service';
-import { HOST, V3API_OPTIONS, extractJson }	from '../../environments/environment';
+import { Httpv3 }							from '../_shared/_services/httpv3.service';
 
 @Injectable()
 export class TopkService {
 
 	constructor (
-		private http: Http,
-		private userService: UserService,
+		private httpv3: Httpv3,
 	) {}
 
 	///////////////////////////////////////////////////////////
 	// actions
 	getTopk(): Observable<Object> {
 
-		return this.http
-			.get(
-				HOST+'/id/15',
-				V3API_OPTIONS
-			)
-			.map(extractJson)
+		return this.httpv3
+			.get('/id/15')
 	}
 	giveK(id): Observable<Object> {
 
-		return this.http
+		return this.httpv3
 			.post(
-				HOST+'/id/'+id,
+				'/id/'+id,
 				{
 					event:		'K',
-					anticsrf:	this.userService.getAnticsrf(),
-				},
-				V3API_OPTIONS
+				}
 			)
-			.map(extractJson)
 	}
 }
