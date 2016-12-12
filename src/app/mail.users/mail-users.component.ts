@@ -8,12 +8,4 @@ import {Component, Input} from '@angular/core';
 export class MailUsersComponent {
 	@Input() mapUsers;
 	@Input() showThread;
-
-	 mapToArr = (map) => {
-		let arr = [];
-		for (var key in map) {
-			arr.push( map[key] );
-		}
-		return arr;
-	}
 }

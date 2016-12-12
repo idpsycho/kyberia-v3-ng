@@ -25,65 +25,13 @@ export class MailService {
 			)
 	}
 
-	getMailData(): Observable<Object> {
-
+	getMailUsers(): Observable<Object> {
 		return this.httpv3
-			.get('/id/24')
+			.get('/v3api/endpoints/mail-users.php');
 	}
 
-	getUserMails(mailToUsername) {
-		return this.getMails().map(function(mapUsers) {
-
-			return mapUsers[mailToUsername];
-		});
+	getMailThread(userName): Observable<Object> {
+		return this.httpv3
+			.get(`/v3api/endpoints/mail-thread.php?name=${userName}`);
 	}
-
-	getMails() {
-		return this.getMailData()
-			.map(this.processUsersMails);
-	}
-
-	processUsersMails = (json) => {
-		let mapUsers = [];
-		let myUserId = this.userService.getId();
-		json.mails.forEach( mail => {
-			let otherUserId;
-			let otherUserName;
-
-			if (mail.mail_to == myUserId) {
-				otherUserId = mail.mail_from;
-				otherUserName = mail.mail_from_name;
-			} else {
-				otherUserId = mail.mail_to;
-				otherUserName = mail.mail_to_name;
-			}
-
-			if (!mapUsers[otherUserName]) {
-				mapUsers[otherUserName] = {
-					mails: [],
-					userId: otherUserId,
-					userName: otherUserName
-				};
-			}
-			let mails = mapUsers[otherUserName].mails;
-			if (!mails.length) {
-				mails.push([mail] );
-			}
-			else {
-				if (mails[mails.length - 1][0].mail_to === mail.mail_to) {
-					mails[mails.length - 1].push(mail);
-				} else {
-					mails.push([mail] );
-				}
-			}
-
-			// mapUsers[otherUserName].mails.push( mail );
-		});
-
-		console.log('mapUsers', mapUsers);
-
-
-		return mapUsers;
-	}
-
 }

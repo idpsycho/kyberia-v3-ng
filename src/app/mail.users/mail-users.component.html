@@ -3,25 +3,24 @@
 
 		<div
 			class="user-item-wrapper clearfix"
-			*ngFor="let user of mapToArr(mapUsers)"
+			*ngFor="let user of mapUsers"
 		>
 
 			<div
 				class="user-item"
-				(click)="showThread(user.userName, user.userId)"
+				(click)="showThread(user.user_name, user.user_id)"
 			>
 
 				<div class="icon">
-					<img [src]="user.userId | userIdToAvatarSrc">
+					<img [src]="user.user_id | userIdToAvatarSrc">
 				</div>
 
 				<div class="msg">
 					<div class="header">
-						<div class="user-format">{{user.userName}}</div>
-						<div class="msg-count">{{user.mails.length}}</div>
+						<div class="user-format">{{user.user_name}}</div>
 					</div>
 					<div class="body">
-						{{user.mails[0][0].mail_text}}
+						{{user.last_message}}
 					</div>
 				</div>
 			</div>

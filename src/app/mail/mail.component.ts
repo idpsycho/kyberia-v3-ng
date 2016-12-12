@@ -31,23 +31,23 @@ export class MailComponent implements OnDestroy {
 	}
 
 	showThread = (userName, userId) => {
+		const user = this.mapUsers[userId];
 		this.mailToUsername = userName;
-		let user = this.mapUsers[userId];
 		this.userMails = user && user.mails;
 	}
 
 	goBack = () => {
 		this.mailToUsername = '';
+		this.userMails = [];
 
 		document.getElementsByClassName("page-mail")[0].setAttribute("style", "bottom: 0px");
 	}
 
 	loadMails = () => {
 		this.mailService
-			.getMails()
-			.subscribe(mapUsers => { this.mapUsers = mapUsers; });
+			.getMailUsers()
+			.subscribe(json => { this.mapUsers = json.mailUsers; });
 	}
-
 
 	/////////////////////////////////////////////////////
 	// toto sluzi na to, aby sa refreshovala routa - potom to refaktorneme na decorator

@@ -23,16 +23,8 @@ export class MailThreadComponent {
 		this.userId = this.userService.getId();
 	}
 
-	ngOnInit() {
-		this.loadUserMails();
-		console.log('userMails', this.userMails);
-
-	}
-
 	ngOnChanges() {
 		this.loadUserMails();
-		console.log('userMails', this.userMails);
-
 	}
 
 	send() {
@@ -44,11 +36,10 @@ export class MailThreadComponent {
 	loadUserMails = () => {
 		if (!this.mailToUsername) return;
 		this.mailService
-			.getUserMails(this.mailToUsername)
+			.getMailThread(this.mailToUsername)
 			.subscribe(this.updateUserMails);
 
 		this.offsetContainer(this.areaSize + 10);
-
 	}
 
 	scrollMessages(){
@@ -62,7 +53,22 @@ export class MailThreadComponent {
 
 	updateUserMails = (userMails) => {
 		this.mailText = '';
-		this.userMails = userMails && userMails.mails;
+
+		const mailResponse = userMails && userMails.userMails;
+		let tempMailArr = [];
+		for (let i = 0; i < mailResponse.length; i++) {
+			if (tempMailArr.length === 0) {
+				tempMailArr.push([ mailResponse[i] ]);
+			} else {
+				if (tempMailArr[tempMailArr.length - 1][0].mail_to === mailResponse[i].mail_to) {
+					tempMailArr[tempMailArr.length - 1].push(mailResponse[i]);
+				} else {
+					tempMailArr.push([ mailResponse[i] ]);
+				}
+			}
+		}
+		this.userMails = tempMailArr;
+
 	};
 
 	resizeArea(){
