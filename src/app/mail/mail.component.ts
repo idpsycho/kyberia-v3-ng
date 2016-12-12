@@ -46,7 +46,7 @@ export class MailComponent implements OnDestroy {
 	loadMails = () => {
 		this.mailService
 			.getMailUsers()
-			.subscribe(json => { this.mapUsers = json.mailUsers; });
+			.subscribe((json: any) => { this.mapUsers = json.mailUsers; });
 	}
 
 	/////////////////////////////////////////////////////
