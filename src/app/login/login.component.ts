@@ -14,7 +14,7 @@ export class LoginComponent {
 
 	user = null;
 	username = localStorage.getItem('lastLoginUsername') || 'ubik';
-	password = (this.username === 'psycho' || this.username === 'laker_faker' || this.username === 'miyamoto') ? 'heslo' : '';
+	password = (this.username === 'psycho' || this.username === 'lakerko' || this.username === 'miyamoto') ? 'heslo' : '';
 	loading = false;
 
 	constructor(
