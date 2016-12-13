@@ -38,7 +38,7 @@ export class MailComponent implements OnDestroy {
 
 	goBack = () => {
 		this.mailToUsername = '';
-		this.userMails = [];
+		this.loadMails();
 
 		document.getElementsByClassName("page-mail")[0].setAttribute("style", "bottom: 0px");
 	}
