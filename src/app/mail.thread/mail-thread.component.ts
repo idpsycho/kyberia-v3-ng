@@ -24,6 +24,7 @@ export class MailThreadComponent {
 	}
 
 	ngOnChanges() {
+		this.userMails = [];
 		this.loadUserMails();
 	}
 
@@ -68,7 +69,6 @@ export class MailThreadComponent {
 			}
 		}
 		this.userMails = tempMailArr;
-
 	};
 
 	resizeArea(){
