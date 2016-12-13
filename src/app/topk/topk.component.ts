@@ -38,7 +38,6 @@ export class TopkComponent implements OnDestroy {
 	// actions
 
 	loadTopK = () => {
-		console.log('loadTopK');
 		this.topkService
 			.getTopk()
 			.subscribe(this.updateTopk)
