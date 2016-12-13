@@ -1,16 +1,22 @@
 <div class="mail-users">
 	<div class="users-view" *ngIf="mapUsers">
+		<input
+			class="message"
+			placeholder="Type name of a user to start a new conversation"
+			type="text"
+			(keyup)="checkSend($event)"
+			[(ngModel)]="mailToUsername"
+		>
+		<button (click)="createThread(mailToUsername)">
+			Start
+		</button>
 
-		<div
-			class="user-item-wrapper clearfix"
+		<div class="user-item-wrapper clearfix"
 			*ngFor="let user of mapUsers"
 		>
-
-			<div
-				class="user-item"
+			<div class="user-item"
 				(click)="showThread(user.user_name, user.user_id)"
 			>
-
 				<div class="icon">
 					<img [src]="user.user_id | userIdToAvatarSrc">
 				</div>

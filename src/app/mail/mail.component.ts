@@ -49,6 +49,10 @@ export class MailComponent implements OnDestroy {
 			.subscribe((json: any) => { this.mapUsers = json.mailUsers; });
 	}
 
+	createThread = (mailToUsername) => {
+		this.mailToUsername = mailToUsername;
+	}
+
 	/////////////////////////////////////////////////////
 	// toto sluzi na to, aby sa refreshovala routa - potom to refaktorneme na decorator
 

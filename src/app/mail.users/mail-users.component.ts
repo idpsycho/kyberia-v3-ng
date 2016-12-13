@@ -8,4 +8,12 @@ import {Component, Input} from '@angular/core';
 export class MailUsersComponent {
 	@Input() mapUsers;
 	@Input() showThread;
+	@Input() createThread;
+	mailToUsername = ''; // problematic?
+
+	checkSend(e) {
+		if (e.keyCode == 13) {
+			this.createThread(this.mailToUsername);
+		}
+	}
 }
