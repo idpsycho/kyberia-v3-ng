@@ -9,7 +9,7 @@ export class MailUsersComponent {
 	@Input() mapUsers;
 	@Input() showThread;
 	@Input() createThread;
-	mailToUsername = ''; // problematic?
+	@Input() mailToUsername;
 
 	checkSend(e) {
 		if (e.keyCode == 13) {
