@@ -11,6 +11,8 @@ import { UserService }			from '../_shared/user.service';
 })
 export class HeaderComponent {
 
+	isDevSite = (window.location.host == 'v3ng.brm.sk');
+
 	constructor(
 		public userService: UserService,
 		private router: Router,
