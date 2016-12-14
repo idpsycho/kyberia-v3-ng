@@ -38,6 +38,7 @@ export class LoginComponent {
 
 		if (!json.success) {
 			this.alertService.error('nepodarilo sa mi prihlasit :\'(');
+			alert( JSON.stringify(json) );
 			return;
 		}
 
