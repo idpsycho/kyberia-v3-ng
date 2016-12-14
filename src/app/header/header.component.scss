@@ -8,6 +8,10 @@
 	border-bottom: 1px solid $green;
 	color: #444;
 	line-height: 40px;
+
+	// bolo prekryte fullpage-containerom, a potrebujem kliknut na tajny link v headri
+	z-index: 9;
+    position: relative;
 }
 
 .header-v3 a.active {

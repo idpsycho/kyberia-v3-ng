@@ -2,25 +2,33 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-    <style>
-    	body, html { background: #000; }
-    </style>
+	<style>
+		body, html { background: black; }
+	</style>
 
-    <title>Kyberia v3 ng</title>
+	<title>Kyberia v3 ng</title>
 </head>
 
 <body>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<script type="text/javascript">
+		app_redirect('./build/index.html');
+		// app_redirect('http://v3ng.brm.sk');
+
+		function app_redirect(url) {
+			document.addEventListener('deviceready', onDeviceReady, false);
+
+			function onDeviceReady() {
+				// alert('redirecting to: '+ url);
+				window.location = url;
+			}
+		}
+	</script>
+
 </body>
 
 </html>

@@ -13,15 +13,18 @@ import { AlertService }			from '../header.alert/alert.service';
 export class LoginComponent {
 
 	user = null;
-	username = localStorage.getItem('lastLoginUsername') || 'ubik';
-	password = (this.username === 'psycho' || this.username === 'lakerko' || this.username === 'miyamoto') ? 'heslo' : '';
+	username = localStorage.getItem('lastLoginUsername') || '';
+	password = '';
 	loading = false;
 
 	constructor(
 		public userService: UserService,
 		private alertService: AlertService,
 		public router: Router,
-	) { }
+	) {
+		if (this.isDevUser())
+			this.password = 'heslo';
+	}
 
 	login(): void {
 		this.loading = true;
@@ -43,6 +46,11 @@ export class LoginComponent {
 		this.alertService.clear();
 
 		this.router.navigate([ '/mail' ]);
+	}
+
+	isDevUser = () => {
+		var name = (this.username || '').toLowerCase();
+		return ['psycho', 'lakerko', 'miyamoto'].indexOf(name) != -1;
 	}
 
 }
