@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "sk.kyberia.v3ng"
-        version   = "1.0.2">
+        version   = "1.0.3">
 
     <name>Kyberia</name>
 
@@ -63,21 +63,16 @@
     <!-- <plugin name="cordova-plugin-splashscreen"        source="npm" spec="~3.2.1" /> -->
     <plugin name="cordova-plugin-statusbar"           source="npm" spec="~2.1.2" />
     <!-- <plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.0" /> -->
-    <!-- <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" /> -->
+    <plugin name="cordova-plugin-whitelist"           source="npm" spec="~1.2.1" />
 
     <!-- Define app icon and splashscreen for each platform. -->
     <icon src="icon.png" />
 
+    <!-- this resets permissions and then adds some -->
     <preference name="permissions" value="none"/>
-
-    <!-- to enable individual permissions use the following examples -->
     <feature name="http://api.phonegap.com/1.0/notification"/>
 
     <platform name="android">
-<!--         <config-file target="AndroidManifest.xml" parent="/manifest" mode="delete">
-            <uses-permission android:name="android.permission.RECORD_AUDIO" />
-        </config-file>
- -->
         <icon   src="www/res/icon/android/drawable-ldpi-icon.png"               density="ldpi" />
         <icon   src="www/res/icon/android/drawable-mdpi-icon.png"               density="mdpi" />
         <icon   src="www/res/icon/android/drawable-hdpi-icon.png"               density="hdpi" />
