@@ -16,6 +16,7 @@ export class MailComponent implements OnDestroy {
 	mailToUsername = '';
 	mailToUserId = '';
 	controller = {};
+	checkMailInterval;
 
 	constructor(
 		private mailService: MailService,
@@ -27,6 +28,7 @@ export class MailComponent implements OnDestroy {
 			return;
 		}
 
+		this.startCheckMailInterval();
 		this.bindRouteRefresh(this.loadMails);
 	}
 
@@ -34,11 +36,13 @@ export class MailComponent implements OnDestroy {
 		const user = this.mapUsers[userId];
 		this.mailToUsername = userName;
 		this.userMails = user && user.mails;
+		clearInterval(this.checkMailInterval);
 	}
 
 	goBack = () => {
 		this.mailToUsername = '';
 		this.loadMails();
+		this.startCheckMailInterval();
 
 		document.getElementsByClassName("page-mail")[0].setAttribute("style", "bottom: 0px");
 	}
@@ -53,14 +57,32 @@ export class MailComponent implements OnDestroy {
 		this.mailToUsername = mailToUsername;
 	}
 
+	checkNewMail() {
+		this.mailService
+			.checkNewMail()
+			.subscribe((json: any) => {
+				if (parseInt(json.data) != 0) {
+					this.loadMails();
+				}
+			});
+	}
+
+	startCheckMailInterval() {
+		this.checkMailInterval = setInterval(() => {
+			this.checkNewMail();
+		}, 30000);
+	}
+
 	/////////////////////////////////////////////////////
 	// toto sluzi na to, aby sa refreshovala routa - potom to refaktorneme na decorator
 
 	routeSubscription = null;
 
 	ngOnDestroy() {
+		clearInterval(this.checkMailInterval);
 		this.unsubscribeRouteRefresh();
 	}
+
 	bindRouteRefresh(fn) {
 		this.routeSubscription = this.router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
@@ -68,6 +90,7 @@ export class MailComponent implements OnDestroy {
 			}
 		});
 	}
+
 	unsubscribeRouteRefresh() {
 		if (!this.routeSubscription) return;
 

@@ -15,6 +15,7 @@ export class MailThreadComponent {
 	userMails = [];
 	areaSize = 27;
 	userId = '';
+	checkMailInterval;
 
 	constructor(
 		private mailService: MailService,
@@ -26,6 +27,11 @@ export class MailThreadComponent {
 	ngOnChanges() {
 		this.userMails = [];
 		this.loadUserMails();
+		// ugly ass condition
+
+		if (this.mailToUsername && (!this.checkMailInterval || (this.checkMailInterval && this.checkMailInterval.runCount == -1))) {
+			this.startCheckMailInterval();
+		}
 	}
 
 	send() {
@@ -78,6 +84,27 @@ export class MailThreadComponent {
 		this.scrollMessages();
 
 		this.offsetContainer(this.areaSize + 10);
+	}
+
+	checkNewMail() {
+		this.mailService
+			.checkNewMail()
+			.subscribe((json: any) => {
+				if (parseInt(json.data) != 0 && json.data.split(";")[1] === this.mailToUsername) {
+					this.loadUserMails();
+				}
+			});
+	}
+
+	startCheckMailInterval() {
+		this.checkMailInterval = setInterval(() => {
+			this.checkNewMail();
+		}, 30000);
+	}
+
+	callGoBack() {
+		clearInterval(this.checkMailInterval);
+		this.goBack();
 	}
 
 }

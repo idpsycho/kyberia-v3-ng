@@ -34,4 +34,9 @@ export class MailService {
 		return this.httpv3
 			.get(`/v3api/endpoints/mail-thread.php?name=${userName}`);
 	}
+
+	checkNewMail(): Observable<Object> {
+		return this.httpv3
+			.get('/ajax/check_new_mail.php');
+	}
 }
