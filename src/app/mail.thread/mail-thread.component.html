@@ -32,7 +32,7 @@
 			<div class="mail"
 				[ngClass]="{
 					'send': userId == mailGroup[0].mail_from,
-					'recieved': userId == mailGroup[0].mail_to
+					'received': userId == mailGroup[0].mail_to
 				}"
 				*ngFor="let mailGroup of userMails"
 			>

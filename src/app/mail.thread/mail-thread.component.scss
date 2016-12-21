@@ -112,6 +112,17 @@
 			-webkit-box-direction: reverse;
 			flex-direction: row-reverse;
 			text-align: right;
+
+			.messages {
+				padding-left: 70px; // icon width + padding
+			}
+		}
+
+		&.received {
+
+			.messages {
+				padding-right: 70px; // icon width + padding
+			}
 		}
 
 		.messages {
